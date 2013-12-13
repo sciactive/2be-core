@@ -26,5 +26,3 @@ return array(
 		array('all', 'All Abilities', 'Let user do anything, regardless of whether they have the ability.')
 	),
 );
-
-?>

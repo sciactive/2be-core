@@ -114,5 +114,3 @@ class template implements template_interface {
 		return $return;
 	}
 }
-
-?>

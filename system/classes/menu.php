@@ -233,5 +233,3 @@ class menu {
 		return true;
 	}
 }
-
-?>

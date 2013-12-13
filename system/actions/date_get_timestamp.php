@@ -27,5 +27,3 @@ try {
 } catch (Exception $e) {
 	$pines->page->override_doc('error');
 }
-
-?>

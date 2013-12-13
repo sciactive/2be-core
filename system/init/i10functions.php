@@ -317,5 +317,3 @@ function pines_url() {
 }
 
 if (P_SCRIPT_TIMING) pines_print_time('Define Basic Functions');
-
-?>

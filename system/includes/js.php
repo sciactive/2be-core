@@ -43,5 +43,3 @@ header('Expires: '.gmdate('r', time()+604800));
 header('ETag: "'.$etag.'"');
 
 echo $output;
-
-?>

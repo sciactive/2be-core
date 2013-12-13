@@ -19,5 +19,3 @@ header('Content-Disposition: attachment; filename="'.$_REQUEST['filename'].'.csv
 
 $pines->page->override = true;
 $pines->page->override_doc($_REQUEST['content']);
-
-?>

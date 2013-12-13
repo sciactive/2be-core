@@ -16,5 +16,3 @@ defined('P_RUN') or die('Direct access prohibited');
  * @package Core
  */
 class component implements component_interface { }
-
-?>

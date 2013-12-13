@@ -111,5 +111,3 @@ class info {
 		return false;
 	}
 }
-
-?>

@@ -34,5 +34,3 @@ foreach ($_p_comkill as $_p_cur_comkill) {
 }
 unset ($_p_comkill, $_p_cur_comkill);
 if (P_SCRIPT_TIMING) pines_print_time('Kill Components');
-
-?>

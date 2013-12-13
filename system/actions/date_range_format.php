@@ -17,5 +17,3 @@ if (!gatekeeper())
 $pines->page->override = true;
 header('Content-Type: text/plain');
 $pines->page->override_doc(format_date_range(!is_numeric($_REQUEST['start_timestamp']) ? time() : (int) $_REQUEST['start_timestamp'], !is_numeric($_REQUEST['end_timestamp']) ? time() : (int) $_REQUEST['end_timestamp'], empty($_REQUEST['format']) ? null : $_REQUEST['format'], empty($_REQUEST['timezone']) ? null : new DateTimeZone($_REQUEST['timezone'])));
-
-?>

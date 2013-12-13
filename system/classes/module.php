@@ -322,5 +322,3 @@ class module {
 		return $content;
 	}
 }
-
-?>

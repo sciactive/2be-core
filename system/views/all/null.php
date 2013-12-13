@@ -13,4 +13,3 @@
 defined('P_RUN') or die('Direct access prohibited');
 
 return;
-?>

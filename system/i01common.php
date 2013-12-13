@@ -53,6 +53,4 @@ if (!function_exists('is_clean_filename')) {
 	function is_clean_filename($filename) {
 		return ( strpos($filename, '..') === false );
 	}
-}
-
-?>
+}

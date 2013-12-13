@@ -28,5 +28,3 @@ if (!$pines->page->override) {
 	if (P_SCRIPT_TIMING) pines_print_time('Render Menus');
 	if (P_SCRIPT_TIMING) pines_print_time('Process Menus');
 }
-
-?>

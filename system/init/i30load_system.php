@@ -121,5 +121,3 @@ if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
  */
 $pines = new pines;
 if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
-
-?>

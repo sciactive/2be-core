@@ -26,5 +26,3 @@ if (!$_p_error_module) {
 	}
 }
 if (P_SCRIPT_TIMING) pines_print_time('Run Requested Action');
-
-?>

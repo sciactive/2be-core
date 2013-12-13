@@ -174,5 +174,3 @@ class config {
 		return true;
 	}
 }
-
-?>

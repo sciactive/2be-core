@@ -72,5 +72,3 @@ if ($_SESSION['p_errors']) {
 	$pines->session('close');
 }
 if (P_SCRIPT_TIMING) pines_print_time('Display Pending Notices');
-
-?>

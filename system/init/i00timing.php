@@ -65,5 +65,3 @@ else
 	pines_print_time('Script Timing Start');
 	pines_print_time('Script Timing Start');
 }
-
-?>

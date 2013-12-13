@@ -1190,5 +1190,3 @@ interface icons_interface extends component_interface {
 }
 
 if (P_SCRIPT_TIMING) pines_print_time('Define Service Interfaces');
-
-?>

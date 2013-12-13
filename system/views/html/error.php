@@ -226,4 +226,4 @@ if ($code == 400) { // Bad Request ?>
 <p>
 	Is this dangerous?
 </p>
-<?php } ?>
+<?php }

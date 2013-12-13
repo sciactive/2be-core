@@ -61,6 +61,4 @@ define('P_SCRIPT_TIMING', false);
 // Run the system init scripts.
 foreach (glob('system/init/i*.php') as $_p_cur_sysinit) {
 	require($_p_cur_sysinit);
-}
-
-?>
+}

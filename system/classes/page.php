@@ -300,5 +300,3 @@ class page {
 		return $return;
 	}
 }
-
-?>

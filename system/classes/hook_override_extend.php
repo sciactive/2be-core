@@ -81,5 +81,3 @@ class hook_override__NAMEHERE_ extends hook_override {
 
 //#CODEHERE#
 }
-
-?>

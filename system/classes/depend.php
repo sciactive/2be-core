@@ -1026,5 +1026,3 @@ EOF;
 		return eval('return ('.$parsable.');');
 	}
 }
-
-?>

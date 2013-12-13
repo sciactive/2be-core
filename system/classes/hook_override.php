@@ -17,5 +17,3 @@ defined('P_RUN') or die('Direct access prohibited');
  * @package Core
  */
 class hook_override { }
-
-?>
