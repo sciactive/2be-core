@@ -1,7 +1,7 @@
 /*
- * Pines JavaScript Object
+ * WonderPHP JavaScript Object
  *
- * Copyright (c) 2010-2012 Hunter Perrin
+ * Copyright (c) 2010-2013 Hunter Perrin
  *
  * Licensed under the GNU Affero GPL:
  *	  http://www.gnu.org/licenses/agpl.html

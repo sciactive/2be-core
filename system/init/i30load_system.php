@@ -72,21 +72,21 @@ include('system/classes/pines.php');
 include('system/classes/template.php');
 if (P_SCRIPT_TIMING) pines_print_time('Load System Classes');
 
-if (P_SCRIPT_TIMING) pines_print_time('Load Pines');
+if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
 /**
- * The main object for Pines.
+ * The main object for WonderPHP.
  *
- * This object is used to hold everything from Pines' settings, to component
+ * This object is used to hold everything from WonderPHP's settings, to component
  * functions. Components' configuration files will be parsed into $pines->config
  * under the name of their component. Such as $pines->config->com_xmlparser.
  * Components' classes will be automatically loaded into $pines under their name
  * when the variable is *first used*. For example, com_xmlparser will be loaded
  * the first time $pines->com_xmlparser is accessed.
  *
- * $pines also holds Pines' standard classes/objects (called "services"), which
+ * $pines also holds WonderPHP's standard classes/objects (called "services"), which
  * include:
  *
- * Pines Core:
+ * WonderPHP Core:
  *
  * - info - System and component info.
  * - config - System and component configuration.
@@ -98,7 +98,7 @@ if (P_SCRIPT_TIMING) pines_print_time('Load Pines');
  * Provided by Components:
  *
  * - template - The current template's object.
- * - configurator - Manages configuration settings for Pines and components.
+ * - configurator - Manages configuration settings for WonderPHP and components.
  * - log_manager - Manages logging features.
  * - entity_manager - Manages data abstraction (entities).
  * - user_manager - Manages users, groups, and their permissions.
@@ -120,6 +120,6 @@ if (P_SCRIPT_TIMING) pines_print_time('Load Pines');
  * @global pines $pines
  */
 $pines = new pines;
-if (P_SCRIPT_TIMING) pines_print_time('Load Pines');
+if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
 
 ?>

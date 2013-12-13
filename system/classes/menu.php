@@ -12,7 +12,7 @@
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
- * The Pines menu system.
+ * The WonderPHP menu system.
  * @package Core
  */
 class menu {

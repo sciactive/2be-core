@@ -1,6 +1,6 @@
 <?php
 /**
- * Pines' configuration.
+ * WonderPHP's configuration.
  *
  * @package Core
  * @license http://www.gnu.org/licenses/agpl-3.0.html
@@ -17,25 +17,25 @@ return array(
 		'name' => 'system_name',
 		'cname' => 'System Name',
 		'description' => 'The name of the system.',
-		'value' => 'Pines',
+		'value' => 'WonderPHP',
 		'peruser' => true,
 	),
 	array(
 		'name' => 'full_location',
 		'cname' => 'Full Location',
-		'description' => 'The URL of this Pines installation. If you leave this blank, it will be discovered for you. End this path with a slash!',
+		'description' => 'The URL of this WonderPHP installation. If you leave this blank, it will be discovered for you. End this path with a slash!',
 		'value' => '',
 	),
 	array(
 		'name' => 'rela_location',
 		'cname' => 'Relative Location',
-		'description' => 'The URL location of Pines relative to your server root. If it is in the root of the server, just put a slash (/). If you leave this blank, it will be discovered for you. End this path with a slash!',
+		'description' => 'The URL location of WonderPHP relative to your server root. If it is in the root of the server, just put a slash (/). If you leave this blank, it will be discovered for you. End this path with a slash!',
 		'value' => '',
 	),
 	array(
 		'name' => 'static_location',
 		'cname' => 'Static Location',
-		'description' => 'The URL of this Pines installation, for access of static content, like CSS and images. End this path with a slash!',
+		'description' => 'The URL of this WonderPHP installation, for access of static content, like CSS and images. End this path with a slash!',
 		'value' => '',
 	),
 	array(
@@ -48,7 +48,7 @@ return array(
 	array(
 		'name' => 'offline_mode',
 		'cname' => 'Offline Mode',
-		'description' => 'In offline mode, the system will not be accessible, and simply display the offline message. To disable offline mode, you will need to edit "system/config.php" in the Pines directory. Under the array named "offline_mode", change the value to false.',
+		'description' => 'In offline mode, the system will not be accessible, and simply display the offline message. To disable offline mode, you will need to edit "system/config.php" in the WonderPHP directory. Under the array named "offline_mode", change the value to false.',
 		'value' => false,
 	),
 	array(
@@ -67,14 +67,14 @@ return array(
 		'name' => 'page_title',
 		'cname' => 'Page Title',
 		'description' => 'The default title at the top of each page.',
-		'value' => 'Pines',
+		'value' => 'WonderPHP',
 		'peruser' => true,
 	),
 	array(
 		'name' => 'copyright_notice',
 		'cname' => 'Copyright Notice',
 		'description' => 'The copyright notice at the bottom of each page.',
-		'value' => '&copy; 2011-2012 SciActive.com. All Rights Reserved. Powered by Pines.',
+		'value' => '&copy; 2011-2013 SciActive.com. All Rights Reserved. Powered by WonderPHP.',
 		'peruser' => true,
 	),
 	array(

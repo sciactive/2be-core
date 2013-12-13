@@ -1,6 +1,6 @@
 <?php
 /**
- * Common functions used in Pines.
+ * Common functions used in WonderPHP.
  * 
  * These can be overriden by components, which is why this file starts with i01.
  * It's loaded along with the components' init files.

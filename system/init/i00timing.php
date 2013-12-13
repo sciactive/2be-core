@@ -13,7 +13,7 @@ defined('P_RUN') or die('Direct access prohibited');
 
 if (P_SCRIPT_TIMING) {
 	/**
-	 * Display a message for Pines Script Timing.
+	 * Display a message for WonderPHP Script Timing.
 	 *
 	 * Messages will be displayed in the FireBug console, if available, or an
 	 * alert() if not.
@@ -52,7 +52,7 @@ if (console.log)
 else
 	alert(message);
 })("';
-		echo 'Pines Script Timing\n\nTimes are measured in seconds.\n';
+		echo 'WonderPHP Script Timing\n\nTimes are measured in seconds.\n';
 		echo $time_output;
 		echo '--------------------\n';
 		printf(str_pad('Time Spent Timing', 70).'%F\n', $subtract_time);

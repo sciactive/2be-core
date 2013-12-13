@@ -1,9 +1,9 @@
 <?php
 /**
- * The controller for Pines' architecture.
+ * The controller for WonderPHP's architecture.
  *
- * Pines - an Enterprise PHP Application Framework
- * Copyright (C) 2008-2012  SciActive.com
+ * WonderPHP - an Enterprise PHP Application Framework
+ * Copyright (C) 2008-2013  SciActive.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as

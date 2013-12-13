@@ -45,7 +45,7 @@ class depend {
 	 * - host (Server hostname.)
 	 * - option (Current or requested component.)
 	 * - php (PHP version.)
-	 * - pines (Pines version.)
+	 * - pines (WonderPHP version.)
 	 * - request (Requested component + action.)
 	 * - service (Available services.)
 	 */
@@ -625,8 +625,8 @@ EOF;
 Check the hostname of the server.
 EOF;
 			$return['syntax'] = <<<'EOF'
-When you use Pines to host multiple websites, you can use this checker to
-determine which website is being requested. If Pines is running on a virtual
+When you use WonderPHP to host multiple websites, you can use this checker to
+determine which website is being requested. If WonderPHP is running on a virtual
 host, this will check the value defined for that virtual host.
 EOF;
 			$return['examples'] = <<<'EOF'
@@ -676,7 +676,7 @@ Check against the current or requested component.
 
 The requested component is what appears in the URL following "option=". If you
 have URL rewriting turned on, it will be the portion of the URL following the
-Pines location, but will be missing the "com_". This check will check both the
+WonderPHP location, but will be missing the "com_". This check will check both the
 requested component and/or the currently running action's component.
 EOF;
 			$return['syntax'] = <<<'EOF'
@@ -786,7 +786,7 @@ EOF;
 	}
 
 	/**
-	 * Check Pines' version.
+	 * Check WonderPHP's version.
 	 *
 	 * Operators should be placed before the version number to test. Such as,
 	 * ">=1.0.0". The available operators are:
@@ -809,9 +809,9 @@ EOF;
 		global $pines;
 		if ($help) {
 			$return = array();
-			$return['cname'] = 'Pines Version Checker';
+			$return['cname'] = 'WonderPHP Version Checker';
 			$return['description'] = <<<'EOF'
-Check the version of Pines running.
+Check the version of WonderPHP running.
 EOF;
 			$return['syntax'] = <<<'EOF'
 Operators should be placed before the version number to test. Such as,
@@ -826,10 +826,10 @@ Operators should be placed before the version number to test. Such as,
 EOF;
 			$return['examples'] = <<<'EOF'
 >=1.0.0
-:	Check that Pines is at least version 1.0.0.
+:	Check that WonderPHP is at least version 1.0.0.
 
 <2
-:	Check that Pines is less than version 2.
+:	Check that WonderPHP is less than version 2.
 EOF;
 			$return['simple_parse'] = true;
 			return $return;

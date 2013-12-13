@@ -1,6 +1,6 @@
 <?php
 /**
- * Initialize the Pines system.
+ * Initialize the WonderPHP system.
  *
  * @package Core
  * @license http://www.gnu.org/licenses/agpl-3.0.html
