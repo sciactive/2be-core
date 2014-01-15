@@ -375,7 +375,7 @@ EOF;
 			$return['simple_parse'] = true;
 			return $return;
 		}
-		$value = str_replace('{server_addr}', $_SERVER['SERVER_ADDR'], $value);
+		$value = str_replace('{server_addr}', idx($_SERVER, 'SERVER_ADDR'), $value);
 		if (
 				strpos($value, '&') !== false ||
 				strpos($value, '|') !== false ||
@@ -384,7 +384,7 @@ EOF;
 				strpos($value, ')') !== false
 			)
 			return $this->simple_parse($value, array($this, 'check_clientip'));
-		$client_ip = $_SERVER['REMOTE_ADDR'];
+		$client_ip = idx($_SERVER, 'REMOTE_ADDR');
 		if ($client_ip == $value) {
 			// IP
 			return true;
@@ -648,7 +648,7 @@ EOF;
 				strpos($value, ')') !== false
 			)
 			return $this->simple_parse($value, array($this, 'check_host'));
-		return $value == $_SERVER['SERVER_NAME'];
+		return $value == idx($_SERVER, 'SERVER_NAME');
 	}
 
 	/**

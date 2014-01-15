@@ -47,12 +47,12 @@ if ($code == 400) { // Bad Request ?>
 <p>
 	The page you requested cannot be found on this server.
 </p>
-<?php if (!empty($_SERVER['HTTP_REFERER'])) { ?>
+<?php if (isset($_SERVER['HTTP_REFERER'])) { ?>
 <p>
 	The link on the
-	<a href="<?php echo htmlspecialchars($_SERVER['HTTP_REFERER']); ?>">referring
+	<a href="<?php echo htmlspecialchars(idx($_SERVER, 'HTTP_REFERER')); ?>">referring
 		page</a> seems to be wrong or outdated. Please inform the author of
-	<a href="<?php echo htmlspecialchars($_SERVER['HTTP_REFERER']); ?>">that
+	<a href="<?php echo htmlspecialchars(idx($_SERVER, 'HTTP_REFERER')); ?>">that
 		page</a> about the error.
 </p>
 <?php } else { ?>
@@ -66,7 +66,7 @@ if ($code == 400) { // Bad Request ?>
 <?php } ?>
 <?php } elseif ($code == 405) { // Method Not Allowed ?>
 <p>
-	The <?php echo htmlspecialchars($_SERVER['REQUEST_METHOD']); ?> method is
+	The <?php echo htmlspecialchars(idx($_SERVER, 'REQUEST_METHOD')); ?> method is
 	not allowed for the requested URL.
 </p>
 <?php } elseif ($code == 406) { // Not Acceptable ?>
@@ -94,7 +94,7 @@ if ($code == 400) { // Bad Request ?>
 </p>
 <?php } elseif ($code == 411) { // Length Required ?>
 <p>
-	A request with the <?php echo htmlspecialchars($_SERVER['REQUEST_METHOD']); ?>
+	A request with the <?php echo htmlspecialchars(idx($_SERVER, 'REQUEST_METHOD')); ?>
 	method requires a valid <code>Content-Length</code> header.
 </p>
 <?php } elseif ($code == 412) { // Precondition Failed ?>

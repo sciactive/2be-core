@@ -158,18 +158,18 @@ class pines {
 
 		if (P_SCRIPT_TIMING) pines_print_time('Get Requested Action');
 		// Load any post or get vars for our component/action.
-		$this->request_component = str_replace('..', 'fail-danger-dont-use-hack-attempt', $_REQUEST['option']);
-		$this->request_action = str_replace('..', 'fail-danger-dont-use-hack-attempt', $_REQUEST['action']);
+		$this->request_component = str_replace('..', 'fail-danger-dont-use-hack-attempt', idx($_REQUEST, 'option'));
+		$this->request_action = str_replace('..', 'fail-danger-dont-use-hack-attempt', idx($_REQUEST, 'action'));
 
 		// URL Rewriting Engine (Simple, eh?)
 		// The values from URL rewriting override any post or get vars, so don't submit
 		// forms to a url you shouldn't.
 		// /index.php/user/group/edit/id-35/ -> /index.php?option=com_user&action=group/edit&id=35
 		if ( $this->config->url_rewriting ) {
-			$request_string = $_SERVER['REQUEST_URI'];
+			$request_string = idx($_SERVER, 'REQUEST_URI');
 			// If there's a query part, remove it.
-			if (strlen($_SERVER['QUERY_STRING']))
-				$request_string = substr($request_string, 0, (strlen($_SERVER['QUERY_STRING']) * -1) - 1);
+			if (strlen(idx($_SERVER, 'QUERY_STRING')))
+				$request_string = substr($request_string, 0, (strlen(idx($_SERVER, 'QUERY_STRING')) * -1) - 1);
 			// Remove the path to WonderPHP.
 			$request_string = substr($request_string, strlen($this->config->rela_location));
 			if ($request_string !== false) {
@@ -881,8 +881,8 @@ class pines {
 		$admin = ($this->user_manager) ? $this->user_manager->gatekeeper('system/all') : false;
 		// Get the default template.
 		$default_template = $admin ? $this->config->admin_template : $this->config->default_template;
-		$this->current_template = ( !empty($_REQUEST['template']) && $this->config->template_override ) ?
-			str_replace('..', 'fail-danger-dont-use-hack-attempt', $_REQUEST['template']) : $default_template;
+		$this->current_template = ( idx($_REQUEST, 'template') && $this->config->template_override ) ?
+			str_replace('..', 'fail-danger-dont-use-hack-attempt', idx($_REQUEST, 'template')) : $default_template;
 		if ($old_template !== $this->current_template) {
 			unset($this->template);
 			$this->template = $this->current_template;

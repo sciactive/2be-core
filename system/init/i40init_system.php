@@ -55,7 +55,7 @@ if (P_SCRIPT_TIMING) pines_print_time('Hook $pines');
 if (P_SCRIPT_TIMING) pines_print_time('Display Pending Notices');
 // Check the session for notices and errors awaiting after a redirect.
 $pines->session();
-if ($_SESSION['p_notices']) {
+if (idx($_SESSION, 'p_notices')) {
 	foreach ((array) $_SESSION['p_notices'] as $_p_cur_notice) {
 		$pines->page->notice($_p_cur_notice);
 	}
@@ -63,7 +63,7 @@ if ($_SESSION['p_notices']) {
 	unset($_SESSION['p_notices'], $_p_cur_notice);
 	$pines->session('close');
 }
-if ($_SESSION['p_errors']) {
+if (idx($_SESSION, 'p_errors')) {
 	foreach ((array) $_SESSION['p_errors'] as $_p_cur_error) {
 		$pines->page->error($_p_cur_error);
 	}

@@ -41,9 +41,9 @@ class config {
 			$this->fill_object($config_array, $this);
 		}
 		if ($this->full_location === '')
-			$this->full_location = 'http'.(($_SERVER['HTTPS'] == "on") ? 's://' : '://').$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strripos($_SERVER['PHP_SELF'], P_INDEX));
+			$this->full_location = 'http'.((idx($_SERVER, 'HTTPS') == "on") ? 's://' : '://').idx($_SERVER, 'HTTP_HOST').substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), P_INDEX));
 		if ($this->rela_location === '')
-			$this->rela_location = substr($_SERVER['PHP_SELF'], 0, strripos($_SERVER['PHP_SELF'], P_INDEX));
+			$this->rela_location = substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), P_INDEX));
 		if ($this->static_location === '')
 			$this->location = $this->rela_location;
 		else

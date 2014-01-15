@@ -18,10 +18,10 @@ $pines->page->override = true;
 header('Content-Type: text/plain');
 
 try {
-	if (empty($_REQUEST['timezone'])) {
-		$date = new DateTime($_REQUEST['date']);
+	if (empty(idx($_REQUEST, 'timezone'))) {
+		$date = new DateTime(idx($_REQUEST, 'date'));
 	} else {
-		$date = new DateTime($_REQUEST['date'], new DateTimeZone($_REQUEST['timezone']));
+		$date = new DateTime(idx($_REQUEST, 'date'), new DateTimeZone(idx($_REQUEST, 'timezone')));
 	}
 	$pines->page->override_doc($date->format('U'));
 } catch (Exception $e) {

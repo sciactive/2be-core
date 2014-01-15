@@ -61,7 +61,7 @@ class template implements template_interface {
 		global $pines;
 		if ( !$params ) $params = array();
 		if ( !isset($params['template']) && isset($_REQUEST['template']) && $pines->config->template_override )
-			$params['template'] = $_REQUEST['template'];
+			$params['template'] = idx($_REQUEST, 'template');
 		$return = ($full_location) ? $pines->config->full_location : $pines->config->rela_location;
 		if ( !isset($component) && !$params )
 			return $return;

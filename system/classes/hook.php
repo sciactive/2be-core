@@ -155,8 +155,8 @@ class hook {
 		if (!class_exists("hook_override_$class_name")) {
 			// This can make it faster, but might introduce security problems.
 			//pines_session();
-			//if (isset($_SESSION['hook_cache']["hook_override_$class_name"])) {
-			//	eval($_SESSION['hook_cache']["hook_override_$class_name"]);
+			//if (isset(idx($_SESSION, 'hook_cache')["hook_override_$class_name"])) {
+			//	eval(idx($_SESSION, 'hook_cache')["hook_override_$class_name"]);
 			//} else {
 			if ($is_string)
 				$reflection = new ReflectionClass($object);
@@ -218,7 +218,7 @@ class hook {
 			// Build a hook_override class.
 			$include = str_replace(array('_NAMEHERE_', '//#CODEHERE#', '<?php', '?>'), array($class_name, $code, '', ''), $this->hook_file);
 			eval ($include);
-			//	if (!$_SESSION['hook_cache'])
+			//	if (!idx($_SESSION, 'hook_cache'))
 			//		$_SESSION['hook_cache'] = array();
 			//	$_SESSION['hook_cache']["hook_override_$class_name"] = $include;
 			//}

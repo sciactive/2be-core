@@ -121,11 +121,11 @@ class menu {
 			if (isset($cur_entry['href']) && (array) $cur_entry['href'] === $cur_entry['href'])
 				$cur_entry['href'] = call_user_func_array(array($pines->template, 'url'), $cur_entry['href']);
 			// Now determine if this item is the current page.
-			if (!$found_exact_match && $cur_entry['href'] === $_SERVER['REQUEST_URI']) {
+			if (!$found_exact_match && $cur_entry['href'] === idx($_SERVER, 'REQUEST_URI')) {
 				// This is an exact match URL.
 				$found_exact_match = true;
 				$cur_entry['current_page'] = true;
-			} elseif (!$found_exact_match && !$found_close_match && $_SERVER["QUERY_STRING"] && $cur_entry['href'] === (substr($_SERVER['REQUEST_URI'], 0, -1 * (strlen($_SERVER["QUERY_STRING"]) + 1)))) {
+			} elseif (!$found_exact_match && !$found_close_match && idx($_SERVER, "QUERY_STRING") && $cur_entry['href'] === (substr(idx($_SERVER, 'REQUEST_URI'), 0, -1 * (strlen(idx($_SERVER, "QUERY_STRING")) + 1)))) {
 				// This page matches, but has query data.
 				$found_close_match = true;
 				$cur_entry['close_page'] = true;
