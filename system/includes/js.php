@@ -12,6 +12,12 @@
  * @link http://sciactive.com/
  */
 
+define('P_RUN', true);
+function pines_print_time() {
+	return;
+}
+require '../init/i10functions.php';
+
 header('Content-Type: text/javascript');
 header('Vary: Accept-Encoding');
 header('Pragma: ');
@@ -21,8 +27,8 @@ $mod_date = filemtime('pines.min.js');
 $etag = dechex(crc32($mod_date));
 
 if (
-		(array_key_exists('HTTP_IF_NONE_MATCH', $_SERVER) && strpos($_SERVER['HTTP_IF_NONE_MATCH'], $etag) !== false ) ||
-		(array_key_exists('HTTP_IF_MODIFIED_SINCE', $_SERVER) && $mod_date <= strtotime(preg_replace('/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE'])))
+		(array_key_exists('HTTP_IF_NONE_MATCH', $_SERVER) && strpos(idx($_SERVER, 'HTTP_IF_NONE_MATCH'), $etag) !== false ) ||
+		(array_key_exists('HTTP_IF_MODIFIED_SINCE', $_SERVER) && $mod_date <= strtotime(preg_replace('/;.*$/', '', idx($_SERVER, 'HTTP_IF_MODIFIED_SINCE'))))
 	) {
 	header('Content-Type: ');
 	header('ETag: "'.$etag.'"');
@@ -32,8 +38,8 @@ if (
 
 $output =
 file_get_contents('pines.min.js')."\n".
-'pines.full_location = "http'.(($_SERVER['HTTPS'] == 'on') ? 's://' : '://').$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strripos($_SERVER['PHP_SELF'], 'system/includes/js.php'))."\"\n".
-'pines.rela_location = "'.substr($_SERVER['PHP_SELF'], 0, strripos($_SERVER['PHP_SELF'], 'system/includes/js.php'))."\"\n".
+'pines.full_location = "http'.((idx($_SERVER, 'HTTPS') == 'on') ? 's://' : '://').idx($_SERVER, 'HTTP_HOST').substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), 'system/includes/js.php'))."\"\n".
+'pines.rela_location = "'.substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), 'system/includes/js.php'))."\"\n".
 "var JSON;JSON||pines.loadjs(pines.rela_location+\"system/includes/json2.min.js\");\n";
 
 header('Content-Length: '.strlen($output));
