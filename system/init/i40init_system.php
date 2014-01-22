@@ -16,7 +16,7 @@ defined('P_RUN') or die('Direct access prohibited');
  *
  * @param string $class_name The class name.
  */
-function __autoload($class_name) {
+function wonder_autoload($class_name) {
 	global $pines;
 	// When session_start() tries to recover hooked objects, we need to make
 	// sure their equivalent hooked classes exist.
@@ -47,6 +47,8 @@ function __autoload($class_name) {
 	}
 }
 
+spl_autoload_register('wonder_autoload');
+
 if (P_SCRIPT_TIMING) pines_print_time('Hook $pines');
 // Load the hooks for $pines.
 $pines->hook->hook_object($pines, '$pines->');
@@ -54,6 +56,8 @@ if (P_SCRIPT_TIMING) pines_print_time('Hook $pines');
 
 if (P_SCRIPT_TIMING) pines_print_time('Display Pending Notices');
 // Check the session for notices and errors awaiting after a redirect.
+if (session_status() === PHP_SESSION_ACTIVE)
+	$pines->session('close');
 $pines->session();
 if (idx($_SESSION, 'p_notices')) {
 	foreach ((array) $_SESSION['p_notices'] as $_p_cur_notice) {
