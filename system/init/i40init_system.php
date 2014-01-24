@@ -56,7 +56,7 @@ if (P_SCRIPT_TIMING) pines_print_time('Hook $pines');
 
 if (P_SCRIPT_TIMING) pines_print_time('Display Pending Notices');
 // Check the session for notices and errors awaiting after a redirect.
-if (session_status() === PHP_SESSION_ACTIVE)
+if (function_exists('session_status') ? session_status() === PHP_SESSION_ACTIVE : ini_get('session.auto_start') !== 0)
 	$pines->session('close');
 $pines->session();
 if (idx($_SESSION, 'p_notices')) {
