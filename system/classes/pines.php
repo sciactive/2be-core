@@ -975,13 +975,13 @@ class pines {
 			default:
 				if (isset($_SESSION['p_session_access']))
 					return;
-				if ( @session_start() ) {
+				if ( session_start() ) {
 					$_SESSION['p_session_access'] = true;
 					@session_write_close();
 				}
 				break;
 			case 'write':
-				@session_start();
+				session_start();
 				$_SESSION['p_session_access'] = true;
 				break;
 			case 'close':
