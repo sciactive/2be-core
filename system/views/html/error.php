@@ -12,9 +12,9 @@
 defined('P_RUN') or die('Direct access prohibited');
 $code = $this->exception->getCode();
 if (empty($this->title))
-	$this->title = ($code !== 0 ? 'Error '.htmlspecialchars($code) : 'Unknown Error');
+	$this->title = ($code !== 0 ? 'Error '.h($code) : 'Unknown Error');
 if (empty($this->note))
-	$this->note = htmlspecialchars($this->exception->getMessage());
+	$this->note = h($this->exception->getMessage());
 
 if (isset($this->custom_content)) {
 	echo $this->custom_content;
@@ -50,9 +50,9 @@ if ($code == 400) { // Bad Request ?>
 <?php if (isset($_SERVER['HTTP_REFERER'])) { ?>
 <p>
 	The link on the
-	<a href="<?php echo htmlspecialchars(idx($_SERVER, 'HTTP_REFERER')); ?>">referring
+	<a href="<?php e(idx($_SERVER, 'HTTP_REFERER')); ?>">referring
 		page</a> seems to be wrong or outdated. Please inform the author of
-	<a href="<?php echo htmlspecialchars(idx($_SERVER, 'HTTP_REFERER')); ?>">that
+	<a href="<?php e(idx($_SERVER, 'HTTP_REFERER')); ?>">that
 		page</a> about the error.
 </p>
 <?php } else { ?>
@@ -60,13 +60,13 @@ if ($code == 400) { // Bad Request ?>
 	Suggestions:
 	<ul>
 		<li>Check the spelling of the address you requested.</li>
-		<li>If you are still having problems, please <a href="<?php echo htmlspecialchars(pines_url()); ?>">visit the homepage</a>.</li>
+		<li>If you are still having problems, please <a href="<?php e(pines_url()); ?>">visit the homepage</a>.</li>
 	</ul>
 </div>
 <?php } ?>
 <?php } elseif ($code == 405) { // Method Not Allowed ?>
 <p>
-	The <?php echo htmlspecialchars(idx($_SERVER, 'REQUEST_METHOD')); ?> method is
+	The <?php e(idx($_SERVER, 'REQUEST_METHOD')); ?> method is
 	not allowed for the requested URL.
 </p>
 <?php } elseif ($code == 406) { // Not Acceptable ?>
@@ -94,7 +94,7 @@ if ($code == 400) { // Bad Request ?>
 </p>
 <?php } elseif ($code == 411) { // Length Required ?>
 <p>
-	A request with the <?php echo htmlspecialchars(idx($_SERVER, 'REQUEST_METHOD')); ?>
+	A request with the <?php e(idx($_SERVER, 'REQUEST_METHOD')); ?>
 	method requires a valid <code>Content-Length</code> header.
 </p>
 <?php } elseif ($code == 412) { // Precondition Failed ?>

@@ -145,21 +145,21 @@ $pines->com_pgrid->load();
 		<tbody>
 			<?php if (isset($this->conditions)) foreach ($this->conditions as $cur_key => $cur_value) { ?>
 			<tr>
-				<td><?php echo htmlspecialchars($cur_key); ?></td>
-				<td><?php echo htmlspecialchars($cur_value); ?></td>
+				<td><?php e($cur_key); ?></td>
+				<td><?php e($cur_value); ?></td>
 			</tr>
 			<?php } ?>
 		</tbody>
 	</table>
-	<input type="hidden" name="<?php echo empty($this->input_name) ? 'conditions' : htmlspecialchars($this->input_name); ?>" id="p_muid_conditions" />
+	<input type="hidden" name="<?php echo empty($this->input_name) ? 'conditions' : h($this->input_name); ?>" id="p_muid_conditions" />
 	<?php foreach (array_keys($pines->depend->checkers) as $cur_checker) {
-		$checker_html = htmlspecialchars($cur_checker);
+		$checker_html = h($cur_checker);
 		$help = $pines->depend->help($cur_checker);
 		if ($help) { ?>
 	<div class="modal hide" id="p_muid_checker_<?php echo $checker_html; ?>">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3 style="background-position: left center; background-repeat: no-repeat; min-height: 32px; padding-left: 36px; line-height: 32px;" class="picon-32 picon-help-contents"><?php echo htmlspecialchars($help['cname']); ?></h3>
+			<h3 style="background-position: left center; background-repeat: no-repeat; min-height: 32px; padding-left: 36px; line-height: 32px;" class="picon-32 picon-help-contents"><?php e($help['cname']); ?></h3>
 		</div>
 		<div class="modal-body">
 			<?php if (!empty($help['description'])) { ?>
@@ -209,10 +209,10 @@ $pines->com_pgrid->load();
 				<div><?php
 				$checker_links = array();
 				foreach (array_keys($pines->depend->checkers) as $cur_checker) {
-					$checker_html = htmlspecialchars($cur_checker);
-					$checker_js = htmlspecialchars(json_encode($cur_checker));
+					$checker_html = h($cur_checker);
+					$checker_js = h(json_encode($cur_checker));
 					$help = $pines->depend->help($cur_checker);
-					$title = htmlspecialchars($help['cname']);
+					$title = h($help['cname']);
 					if ($help)
 						$checker_links[] = "<a title=\"$title\" href=\"javascript:void(0);\" onclick=\"\$('#p_muid_cur_condition_type').val($checker_js);\">$checker_html</a> <a href=\"#p_muid_checker_$checker_html\" data-toggle=\"modal\"><i class=\"icon-info-sign\"></i></a>";
 					else

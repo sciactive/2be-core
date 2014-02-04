@@ -16,7 +16,7 @@ header('Content-Type: text/html');
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title><?php echo htmlspecialchars($this->config->page_title); ?></title>
+	<title><?php e($this->config->page_title); ?></title>
 	<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
 	<?php if ($this->config->offline_twitter_feed) { ?>
 	<script src='https://widgets.twimg.com/j/2/widget.js' type='text/javascript'></script>
@@ -131,7 +131,7 @@ header('Content-Type: text/html');
 <body>
 <div class="wrapper">
 	<div class="header">
-		<h1><?php echo htmlspecialchars($this->config->system_name); ?></h1>
+		<h1><?php e($this->config->system_name); ?></h1>
 		<hr />
 	</div>
 	<?php if ($this->config->offline_twitter_feed) { ?>

@@ -316,6 +316,23 @@ function pines_url() {
 	return call_user_func_array(array($template, 'url'), $args);
 }
 
+/**
+ * A shortcut to echo the result of htmlspecialchars.
+ */
+function e(string $text, boolean $double = true, string $charset = null) {
+	$args = func_get_args();
+	echo call_user_func_array('htmlspecialchars', $args);
+}
+
+/**
+ * A shortcut to htmlspecialchars.
+ * @return string The resulting text.
+ */
+function h(string $text, boolean $double = true, string $charset = null) {
+	$args = func_get_args();
+	return call_user_func_array('htmlspecialchars', $args);
+}
+
 if (P_SCRIPT_TIMING) pines_print_time('Define Basic Functions');
 
 if (P_SCRIPT_TIMING) pines_print_time('Define Phabricator Util Functions');
