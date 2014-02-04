@@ -319,7 +319,7 @@ function pines_url() {
 /**
  * A shortcut to echo the result of htmlspecialchars.
  */
-function e(string $text, boolean $double = true, string $charset = null) {
+function e() {
 	$args = func_get_args();
 	echo call_user_func_array('htmlspecialchars', $args);
 }
@@ -328,7 +328,7 @@ function e(string $text, boolean $double = true, string $charset = null) {
  * A shortcut to htmlspecialchars.
  * @return string The resulting text.
  */
-function h(string $text, boolean $double = true, string $charset = null) {
+function h() {
 	$args = func_get_args();
 	return call_user_func_array('htmlspecialchars', $args);
 }
