@@ -9,7 +9,7 @@
  * @link http://sciactive.com/
  * @deprecated Replaced by error.php
  */
-/* @var $_ pines *//* @var $this module */
+/* @var $_ core *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 $this->title = 'Error 404';
 $this->note = 'Page not Found.';

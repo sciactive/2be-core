@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $_ pines */
+/* @var $_ core */
 defined('P_RUN') or die('Direct access prohibited');
 
 // Strip magic quotes.
@@ -34,6 +34,10 @@ include('system/classes/component.php');
  * Config Class
  */
 include('system/classes/config.php');
+/**
+ * Core Class
+ */
+include('system/classes/core.php');
 /**
  * Depend Class
  */
@@ -62,10 +66,6 @@ include('system/classes/module.php');
  * Page Class
  */
 include('system/classes/page.php');
-/**
- * Pines Class
- */
-include('system/classes/pines.php');
 /**
  * Template Class
  */
@@ -117,7 +117,7 @@ if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
  * $_->log_manager = 'com_emaillogs';
  * </code>
  *
- * @global pines $_
+ * @global core $_
  */
-$_ = new pines;
+$_ = new core;
 if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');

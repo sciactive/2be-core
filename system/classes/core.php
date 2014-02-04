@@ -1,6 +1,6 @@
 <?php
 /**
- * pines class.
+ * core class.
  *
  * @package Core
  * @license http://www.gnu.org/licenses/agpl-3.0.html
@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $_ pines */
+/* @var $_ core */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -29,7 +29,7 @@ defined('P_RUN') or die('Direct access prohibited');
  * @property uploader_interface $uploader The uploader service.
  * @property user_manager_interface $user_manager The user manager service.
  */
-class pines {
+class core {
 	/**
 	 * WonderPHP's and components' info.
 	 * @var info

@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $_ pines */
+/* @var $_ core */
 defined('P_RUN') or die('Direct access prohibited');
 
 if (P_SCRIPT_TIMING) pines_print_time('Define Basic Functions');
@@ -95,7 +95,7 @@ function pines_sort_by_filename($a, $b) {
 /**
  * Shortcut to $_->action().
  *
- * @uses pines::action() Forwards parameters and returns the result.
+ * @uses core::action() Forwards parameters and returns the result.
  * @param string $component The component in which the action resides.
  * @param string $action The action to run.
  * @return mixed The value returned by the action.
@@ -108,7 +108,7 @@ function pines_action($component = null, $action = null) {
 /**
  * Shortcut to $_->redirect().
  *
- * @uses pines::redirect() Forwards parameters and returns the result.
+ * @uses core::redirect() Forwards parameters and returns the result.
  * @param string $url The URL to send the user to.
  * @param int $code The HTTP code to send to the browser.
  */
@@ -120,7 +120,7 @@ function pines_redirect($url, $code = 303) {
 /**
  * Shortcut to $_->format_content().
  *
- * @uses pines::format_content() Forwards parameters and returns the result.
+ * @uses core::format_content() Forwards parameters and returns the result.
  * @param string $content The content to format.
  * @return string The formatted content.
  */
@@ -132,7 +132,7 @@ function format_content($content) {
 /**
  * Shortcut to $_->format_date().
  *
- * @uses pines::format_date() Forwards parameters and returns the result.
+ * @uses core::format_date() Forwards parameters and returns the result.
  * @param int $timestamp The timestamp to format.
  * @param string $type The type of formatting to use.
  * @param string $format The format to use if type is 'custom'.
@@ -147,7 +147,7 @@ function format_date($timestamp, $type = 'full_sort', $format = '', $timezone = 
 /**
  * Shortcut to $_->format_date_range().
  *
- * @uses pines::format_date_range() Forwards parameters and returns the result.
+ * @uses core::format_date_range() Forwards parameters and returns the result.
  * @param int $start_timestamp The timestamp of the beginning of the date range.
  * @param int $end_timestamp The timestamp of the end of the date range.
  * @param string $format The format to use. See the function description for details on the format.
@@ -162,7 +162,7 @@ function format_date_range($start_timestamp, $end_timestamp, $format = null, $ti
 /**
  * Shortcut to $_->format_fuzzy_time().
  *
- * @uses pines::format_fuzzy_time() Forwards parameters and returns the result.
+ * @uses core::format_fuzzy_time() Forwards parameters and returns the result.
  * @param int $timestamp The timestamp to format.
  * @return string Fuzzy time string.
  */
@@ -174,7 +174,7 @@ function format_fuzzy_time($timestamp) {
 /**
  * Shortcut to $_->format_phone().
  *
- * @uses pines::format_phone() Forwards parameters and returns the result.
+ * @uses core::format_phone() Forwards parameters and returns the result.
  * @param string $number The phone number to format.
  * @return string The formatted phone number.
  */
@@ -290,7 +290,7 @@ function pines_log() {
 /**
  * Shortcut to $_->session().
  *
- * @uses pines::session() Forwards parameters and returns the result.
+ * @uses core::session() Forwards parameters and returns the result.
  * @param string $option The type of access or action requested.
  */
 function pines_session($option = 'read') {

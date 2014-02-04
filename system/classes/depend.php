@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $_ pines */
+/* @var $_ core */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -45,7 +45,7 @@ class depend {
 	 * - host (Server hostname.)
 	 * - option (Current or requested component.)
 	 * - php (PHP version.)
-	 * - pines (WonderPHP version.)
+	 * - core (WonderPHP version.)
 	 * - request (Requested component + action.)
 	 * - service (Available services.)
 	 */
@@ -61,7 +61,7 @@ class depend {
 			'host' => array($this, 'check_host'),
 			'option' => array($this, 'check_option'),
 			'php' => array($this, 'check_php'),
-			'pines' => array($this, 'check_pines'),
+			'core' => array($this, 'check_core'),
 			'request' => array($this, 'check_request'),
 			'service' => array($this, 'check_service')
 		);
@@ -173,8 +173,8 @@ EOF;
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
-	 * @uses pines::action
-	 * @uses pines::request_action
+	 * @uses core::action
+	 * @uses core::request_action
 	 * @param string $value The value to check.
 	 * @param bool $help Whether to return the help for this checker.
 	 * @return bool|array The result of the check, or the help array.
@@ -316,9 +316,9 @@ EOF;
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
-	 * @uses pines::check_ip_cidr()
-	 * @uses pines::check_ip_subnet()
-	 * @uses pines::check_ip_range()
+	 * @uses core::check_ip_cidr()
+	 * @uses core::check_ip_subnet()
+	 * @uses core::check_ip_range()
 	 * @param string $value The value to check.
 	 * @param bool $help Whether to return the help for this checker.
 	 * @return bool|array The result of the check, or the help array.
@@ -424,7 +424,7 @@ EOF;
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
-	 * @uses pines::components
+	 * @uses core::components
 	 * @param string $value The value to check.
 	 * @param bool $help Whether to return the help for this checker.
 	 * @return bool|array The result of the check, or the help array.
@@ -485,6 +485,69 @@ EOF;
 			$required = preg_replace(' /([a-z0-9_]+)([<>=]{1,2})(.+)/S', '$3', $value);
 			return version_compare($_->info->$component->version, $required, $compare);
 		}
+	}
+
+	/**
+	 * Check WonderPHP's version.
+	 *
+	 * Operators should be placed before the version number to test. Such as,
+	 * ">=1.0.0". The available operators are:
+	 *
+	 * - =
+	 * - <
+	 * - >
+	 * - <=
+	 * - >=
+	 * - <>
+	 *
+	 * Uses simple_parse() to provide simple logic.
+	 *
+	 * @access private
+	 * @param string $value The value to check.
+	 * @param bool $help Whether to return the help for this checker.
+	 * @return bool|array The result of the check, or the help array.
+	 */
+	private function check_core($value, $help = false) {
+		global $_;
+		if ($help) {
+			$return = array();
+			$return['cname'] = 'WonderPHP Version Checker';
+			$return['description'] = <<<'EOF'
+Check the version of WonderPHP running.
+EOF;
+			$return['syntax'] = <<<'EOF'
+Operators should be placed before the version number to test. Such as,
+">=1.0.0". The available operators are:
+
+* `=`
+* `<`
+* `>`
+* `<=`
+* `>=`
+* `<>`
+EOF;
+			$return['examples'] = <<<'EOF'
+>=1.0.0
+:	Check that WonderPHP is at least version 1.0.0.
+
+<2
+:	Check that WonderPHP is less than version 2.
+EOF;
+			$return['simple_parse'] = true;
+			return $return;
+		}
+		if (
+				strpos($value, '&') !== false ||
+				strpos($value, '|') !== false ||
+				strpos($value, '!') !== false ||
+				strpos($value, '(') !== false ||
+				strpos($value, ')') !== false
+			)
+			return $this->simple_parse($value, array($this, 'check_core'));
+		// <, >, =, <=, >=
+		$compare = preg_replace('/([<>=]{1,2})(.+)/S', '$1', $value);
+		$required = preg_replace('/([<>=]{1,2})(.+)/S', '$2', $value);
+		return version_compare($_->info->version, $required, $compare);
 	}
 
 	/**
@@ -660,8 +723,8 @@ EOF;
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
-	 * @uses pines::component
-	 * @uses pines::request_component
+	 * @uses core::component
+	 * @uses core::request_component
 	 * @param string $value The value to check.
 	 * @param bool $help Whether to return the help for this checker.
 	 * @return bool|array The result of the check, or the help array.
@@ -786,76 +849,13 @@ EOF;
 	}
 
 	/**
-	 * Check WonderPHP's version.
-	 *
-	 * Operators should be placed before the version number to test. Such as,
-	 * ">=1.0.0". The available operators are:
-	 *
-	 * - =
-	 * - <
-	 * - >
-	 * - <=
-	 * - >=
-	 * - <>
-	 *
-	 * Uses simple_parse() to provide simple logic.
-	 *
-	 * @access private
-	 * @param string $value The value to check.
-	 * @param bool $help Whether to return the help for this checker.
-	 * @return bool|array The result of the check, or the help array.
-	 */
-	private function check_pines($value, $help = false) {
-		global $_;
-		if ($help) {
-			$return = array();
-			$return['cname'] = 'WonderPHP Version Checker';
-			$return['description'] = <<<'EOF'
-Check the version of WonderPHP running.
-EOF;
-			$return['syntax'] = <<<'EOF'
-Operators should be placed before the version number to test. Such as,
-">=1.0.0". The available operators are:
-
-* `=`
-* `<`
-* `>`
-* `<=`
-* `>=`
-* `<>`
-EOF;
-			$return['examples'] = <<<'EOF'
->=1.0.0
-:	Check that WonderPHP is at least version 1.0.0.
-
-<2
-:	Check that WonderPHP is less than version 2.
-EOF;
-			$return['simple_parse'] = true;
-			return $return;
-		}
-		if (
-				strpos($value, '&') !== false ||
-				strpos($value, '|') !== false ||
-				strpos($value, '!') !== false ||
-				strpos($value, '(') !== false ||
-				strpos($value, ')') !== false
-			)
-			return $this->simple_parse($value, array($this, 'check_pines'));
-		// <, >, =, <=, >=
-		$compare = preg_replace('/([<>=]{1,2})(.+)/S', '$1', $value);
-		$required = preg_replace('/([<>=]{1,2})(.+)/S', '$2', $value);
-		return version_compare($_->info->version, $required, $compare);
-	}
-
-	/**
 	 * Check against the requested component and action.
 	 *
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
-	 * @uses pines::request_component
-	 * @uses pines::request_action
+	 * @uses core::request_component
+	 * @uses core::request_action
 	 * @param string $value The value to check.
 	 * @param bool $help Whether to return the help for this checker.
 	 * @return bool|array The result of the check, or the help array.
@@ -936,7 +936,7 @@ EOF;
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
-	 * @uses pines::services
+	 * @uses core::services
 	 * @param string $value The value to check.
 	 * @param bool $help Whether to return the help for this checker.
 	 * @return bool|array The result of the check, or the help array.

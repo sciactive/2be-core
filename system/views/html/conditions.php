@@ -19,7 +19,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $_ pines *//* @var $this module */
+/* @var $_ core *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 
 if (!$_->depend->check('component', 'com_pform&com_jquery&com_bootstrap&com_pgrid&com_markdown')) {
