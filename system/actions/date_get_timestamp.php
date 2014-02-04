@@ -8,13 +8,13 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 if (!gatekeeper())
 	punt_user();
 
-$pines->page->override = true;
+$_->page->override = true;
 header('Content-Type: text/plain');
 
 try {
@@ -23,7 +23,7 @@ try {
 	} else {
 		$date = new DateTime(idx($_REQUEST, 'date'), new DateTimeZone(idx($_REQUEST, 'timezone')));
 	}
-	$pines->page->override_doc($date->format('U'));
+	$_->page->override_doc($date->format('U'));
 } catch (Exception $e) {
-	$pines->page->override_doc('error');
+	$_->page->override_doc('error');
 }

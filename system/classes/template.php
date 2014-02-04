@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -58,15 +58,15 @@ class template implements template_interface {
 	 * @return string The URL in a format to work with the current configuration of WonderPHP.
 	 */
 	public function url($component = null, $action = null, $params = array(), $full_location = false) {
-		global $pines;
+		global $_;
 		if ( !$params ) $params = array();
-		if ( !isset($params['template']) && isset($_REQUEST['template']) && $pines->config->template_override )
+		if ( !isset($params['template']) && isset($_REQUEST['template']) && $_->config->template_override )
 			$params['template'] = idx($_REQUEST, 'template');
-		$return = ($full_location) ? $pines->config->full_location : $pines->config->rela_location;
+		$return = ($full_location) ? $_->config->full_location : $_->config->rela_location;
 		if ( !isset($component) && !$params )
 			return $return;
-		if ( $pines->config->url_rewriting ) {
-			if ( !$pines->config->use_htaccess )
+		if ( $_->config->url_rewriting ) {
+			if ( !$_->config->use_htaccess )
 				$return .= P_INDEX.'/';
 			if ( isset($component) ) {
 				// Get rid of 'com_', if it's not the system component.
@@ -96,7 +96,7 @@ class template implements template_interface {
 				$return .= $param_return;
 			}
 		} else {
-			$return .= ($pines->config->use_htaccess) ? '?' : P_INDEX.'?';
+			$return .= ($_->config->use_htaccess) ? '?' : P_INDEX.'?';
 			if ( isset($component) ) {
 				$param_return = 'option='.urlencode($component);
 				if (isset($action))

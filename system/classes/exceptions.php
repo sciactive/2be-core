@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -108,8 +108,8 @@ class HttpClientException extends Exception {
 					break;
 				case 444:
 					$message = 'No Response';
-					global $pines;
-					$pines->page->override = true;
+					global $_;
+					$_->page->override = true;
 					break;
 				default:
 					$message = 'You Done Goofed';

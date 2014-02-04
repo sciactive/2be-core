@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -177,9 +177,9 @@ class module {
 	 * @return int The order in which the module was placed.
 	 */
 	public function attach($position, $order = null) {
-		global $pines;
+		global $_;
 		$this->position = $position;
-		$this->order = $pines->page->attach_module($this, $position, $order);
+		$this->order = $_->page->attach_module($this, $position, $order);
 		return $this->order;
 	}
 
@@ -187,11 +187,11 @@ class module {
 	 * Detach the module from the page.
 	 *
 	 * @uses page::detach_module()
-	 * @return mixed The value of $pines->page->detach_module.
+	 * @return mixed The value of $_->page->detach_module.
 	 */
 	public function detach() {
-		global $pines;
-		return $pines->page->detach_module($this, $this->position, $this->order);
+		global $_;
+		return $_->page->detach_module($this, $this->position, $this->order);
 	}
 
 	/**
@@ -249,7 +249,7 @@ class module {
 	 * @return string The module's rendered content.
 	 */
 	public function render() {
-		global $pines;
+		global $_;
 
 		// Is it already rendered?
 		if ($this->is_rendered)
@@ -257,7 +257,7 @@ class module {
 
 		// Get content from the view.
 		ob_start();
-		$format = $pines->template->format;
+		$format = $_->template->format;
 		$base_dir = ($this->component != 'system') ? 'components/' : '';
 		while(true) {
 			$filename = "{$base_dir}{$this->component}/views/{$format}/{$this->view}.php";
@@ -297,7 +297,7 @@ class module {
 	 * @return string The module's rendered content.
 	 */
 	public function render_model($model = 'module') {
-		global $pines;
+		global $_;
 
 		// Render the module, if it's not already.
 		if (!$this->is_rendered)
@@ -305,18 +305,18 @@ class module {
 
 		// Return the content.
 		ob_start();
-		if (isset($model) && file_exists("templates/{$pines->current_template}/models/$model.php")) {
+		if (isset($model) && file_exists("templates/{$_->current_template}/models/$model.php")) {
 			/**
 			 * This file should print the module's content.
 			 */
-			include "templates/{$pines->current_template}/models/$model.php";
+			include "templates/{$_->current_template}/models/$model.php";
 		} else {
 			/**
 			 * This file should print the module's content.
 			 *
 			 * It should always exist, in every template.
 			 */
-			include "templates/{$pines->current_template}/models/module.php";
+			include "templates/{$_->current_template}/models/module.php";
 		}
 		$content = ob_get_clean();
 		return $content;

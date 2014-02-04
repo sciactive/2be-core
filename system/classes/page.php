@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -65,8 +65,8 @@ class page {
 	public $override = false;
 
 	private function title_load() {
-		global $pines;
-		$this->title = $pines->config->page_title;
+		global $_;
+		$this->title = $_->config->page_title;
 		$this->title_loaded = true;
 	}
 
@@ -107,7 +107,7 @@ class page {
 	 * Get the title of the page.
 	 *
 	 * If the title has not been explicitly set, get_title() uses
-	 * $pines->config->page_title.
+	 * $_->config->page_title.
 	 *
 	 * @return string The title.
 	 */
@@ -244,9 +244,9 @@ class page {
 	 *
 	 * It will require() the template.php file in the current template. However,
 	 * render() will return the result of get_override_doc() if
-	 * $pines->page->override is true.
+	 * $_->page->override is true.
 	 *
-	 * Declares the global $pines in the function so it is available in the
+	 * Declares the global $_ in the function so it is available in the
 	 * template.
 	 *
 	 * @uses page::$override
@@ -257,8 +257,8 @@ class page {
 		if ( $this->override ) {
 			echo $this->get_override_doc();
 		} else {
-			// Make $pines accessible, so the modules and template can use it.
-			global $pines;
+			// Make $_ accessible, so the modules and template can use it.
+			global $_;
 			foreach ($this->modules as &$cur_pos) {
 				if (!$cur_pos || (array) $cur_pos !== $cur_pos)
 					continue;
@@ -273,7 +273,7 @@ class page {
 			/**
 			 * This file should print the whole page's content.
 			 */
-			require "templates/{$pines->current_template}/template.php";
+			require "templates/{$_->current_template}/template.php";
 		}
 		$this->content = ob_get_clean();
 		return $this->content;

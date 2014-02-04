@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -80,7 +80,7 @@ class hook {
 	 * callbacks attached to the actual hook.
 	 *
 	 * Note: Be careful to avoid recursive callbacks, as they may result in an
-	 * infinite loop. All methods under $pines are automatically hooked.
+	 * infinite loop. All methods under $_ are automatically hooked.
 	 *
 	 * @param string $hook The name of the hook to catch.
 	 * @param int $order The order can be negative, which will run before the method, or positive, which will run after the method. It cannot be zero.
@@ -186,7 +186,7 @@ class hook {
 				}
 				unset($cur_param);
 				$code .= $fprefix."function $fname(".implode(', ', $param_array).") {\n"
-				."\tglobal \$pines;\n"
+				."\tglobal \$_;\n"
 				// We must use a debug_backtrace, because that's the best way to
 				// get all the passed arguments, by reference. 5.4 and up lets
 				// us limit it to 1 frame.
@@ -205,13 +205,13 @@ class hook {
 				//."\t}\n"
 				."\t\$function = array(\$this->_p_object, '$fname');\n"
 				."\t\$data = array();\n"
-				."\t\$pines->hook->run_callbacks(\$this->_p_prefix.'$fname', \$arguments, 'before', \$this->_p_object, \$function, \$data);\n"
+				."\t\$_->hook->run_callbacks(\$this->_p_prefix.'$fname', \$arguments, 'before', \$this->_p_object, \$function, \$data);\n"
 				."\tif (\$arguments !== false) {\n"
 				."\t\t\$return = call_user_func_array(\$function, \$arguments);\n"
 				."\t\tif ((object) \$return === \$return && get_class(\$return) === '$class_name')\n"
-				."\t\t\t\$pines->hook->hook_object(\$return, '$prefix', false);\n"
+				."\t\t\t\$_->hook->hook_object(\$return, '$prefix', false);\n"
 				."\t\t\$return = array(\$return);\n"
-				."\t\t\$pines->hook->run_callbacks(\$this->_p_prefix.'$fname', \$return, 'after', \$this->_p_object, \$function, \$data);\n"
+				."\t\t\$_->hook->run_callbacks(\$this->_p_prefix.'$fname', \$return, 'after', \$this->_p_object, \$function, \$data);\n"
 				."\t\tif ((array) \$return === \$return)\n"
 				."\t\t\treturn \$return[0];\n"
 				."\t}\n"

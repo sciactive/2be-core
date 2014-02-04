@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 if (P_SCRIPT_TIMING) pines_print_time('Define Service Interfaces');
@@ -629,7 +629,7 @@ interface entity_manager_interface extends component_interface {
 	 * - If age is 22 or more, then pay is not greater than 8.
 	 * 
 	 * <pre>
-	 * $entities = $pines->entity_manager->get_entities(
+	 * $entities = $_->entity_manager->get_entities(
 	 *	array('reverse' => true, 'limit' => 2),
 	 *	array(
 	 *		'&', // all must be true

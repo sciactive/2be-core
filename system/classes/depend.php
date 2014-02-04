@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -17,7 +17,7 @@ defined('P_RUN') or die('Direct access prohibited');
  * To add a dependency checker type, assign a callback to the $checkers array.
  *
  * <code>
- * $pines->depend->checkers['my_type'] = array($pines->com_mycomponent, 'my_checking_method');
+ * $_->depend->checkers['my_type'] = array($_->com_mycomponent, 'my_checking_method');
  * </code>
  *
  * Your checker callback should return true if the dependency is satisfied, or
@@ -119,7 +119,7 @@ class depend {
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_ability($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Ability Checker';
@@ -152,7 +152,7 @@ EOF;
 			return $return;
 		}
 		if ($value == '!')
-			return (isset($pines->user_manager) ? !$pines->user_manager->gatekeeper() : false);
+			return (isset($_->user_manager) ? !$_->user_manager->gatekeeper() : false);
 		if (
 				strpos($value, '&') !== false ||
 				strpos($value, '|') !== false ||
@@ -161,7 +161,7 @@ EOF;
 				strpos($value, ')') !== false
 			)
 			return $this->simple_parse($value, array($this, 'check_ability'));
-		return (isset($pines->user_manager) ? $pines->user_manager->gatekeeper($value) : true);
+		return (isset($_->user_manager) ? $_->user_manager->gatekeeper($value) : true);
 	}
 
 	/**
@@ -180,7 +180,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_action($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Action Checker';
@@ -221,9 +221,9 @@ EOF;
 			return $return;
 		}
 		if ($value == '')
-			return (!empty($pines->request_action));
+			return (!empty($_->request_action));
 		elseif ($value == '!')
-			return (empty($pines->request_action));
+			return (empty($_->request_action));
 		if (
 				strpos($value, '&') !== false ||
 				strpos($value, '|') !== false ||
@@ -233,10 +233,10 @@ EOF;
 			)
 			return $this->simple_parse($value, array($this, 'check_action'));
 		if (substr($value, 0, 1) == '^')
-			return ($pines->request_action == substr($value, 1));
+			return ($_->request_action == substr($value, 1));
 		elseif (substr($value, 0, 1) == '>')
-			return ($pines->action == substr($value, 1));
-		return $pines->request_action == $value || $pines->action == $value;
+			return ($_->action == substr($value, 1));
+		return $_->request_action == $value || $_->action == $value;
 	}
 
 	/**
@@ -324,7 +324,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_clientip($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Client IP Checker';
@@ -390,15 +390,15 @@ EOF;
 			return true;
 		} elseif (preg_match('/^\d{1,3}(\.\d{1,3}){0,3}\/\d{1,2}$/', $value)) {
 			// CIDR
-			return $pines->check_ip_cidr($client_ip, $value);
+			return $_->check_ip_cidr($client_ip, $value);
 		} elseif (preg_match('/^\d{1,3}(\.\d{1,3}){3}\/\d{1,3}(\.\d{1,3}){3}$/', $value)) {
 			// Subnet Mask
 			$params = explode('/', $value);
-			return $pines->check_ip_subnet($client_ip, $params[0], $params[1]);
+			return $_->check_ip_subnet($client_ip, $params[0], $params[1]);
 		} elseif (preg_match('/^\d{1,3}(\.\d{1,3}){3}-\d{1,3}(\.\d{1,3}){3}$/', $value)) {
 			// IP Range
 			$params = explode('-', $value);
-			return $pines->check_ip_range($client_ip, $params[0], $params[1]);
+			return $_->check_ip_range($client_ip, $params[0], $params[1]);
 		}
 		// Not formatted correctly. May be IPv6 though.
 		return false;
@@ -430,7 +430,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_component($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Component Checker';
@@ -477,13 +477,13 @@ EOF;
 			return $this->simple_parse($value, array($this, 'check_component'));
 		$component = preg_replace('/([a-z0-9_]+)([<>=]{1,2})(.+)/S', '$1', $value);
 		if ($component == $value) {
-			return in_array($value, $pines->components);
+			return in_array($value, $_->components);
 		} else {
-			if (!isset($pines->info->$component))
+			if (!isset($_->info->$component))
 				return false;
 			$compare = preg_replace('/([a-z0-9_]+)([<>=]{1,2})(.+)/S', '$2', $value);
 			$required = preg_replace(' /([a-z0-9_]+)([<>=]{1,2})(.+)/S', '$3', $value);
-			return version_compare($pines->info->$component->version, $required, $compare);
+			return version_compare($_->info->$component->version, $required, $compare);
 		}
 	}
 
@@ -667,7 +667,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_option($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Component (Option) Checker';
@@ -705,9 +705,9 @@ EOF;
 			return $return;
 		}
 		if ($value == '')
-			return (!empty($pines->request_component));
+			return (!empty($_->request_component));
 		elseif ($value == '!')
-			return (empty($pines->request_component));
+			return (empty($_->request_component));
 		if (
 				strpos($value, '&') !== false ||
 				strpos($value, '|') !== false ||
@@ -717,10 +717,10 @@ EOF;
 			)
 			return $this->simple_parse($value, array($this, 'check_option'));
 		if (substr($value, 0, 1) == '^')
-			return ($pines->request_component == substr($value, 1));
+			return ($_->request_component == substr($value, 1));
 		elseif (substr($value, 0, 1) == '>')
-			return ($pines->component == substr($value, 1));
-		return $pines->request_component == $value || $pines->component == $value;
+			return ($_->component == substr($value, 1));
+		return $_->request_component == $value || $_->component == $value;
 	}
 
 	/**
@@ -806,7 +806,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_pines($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'WonderPHP Version Checker';
@@ -845,7 +845,7 @@ EOF;
 		// <, >, =, <=, >=
 		$compare = preg_replace('/([<>=]{1,2})(.+)/S', '$1', $value);
 		$required = preg_replace('/([<>=]{1,2})(.+)/S', '$2', $value);
-		return version_compare($pines->info->version, $required, $compare);
+		return version_compare($_->info->version, $required, $compare);
 	}
 
 	/**
@@ -861,7 +861,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_request($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Request Component/Action Checker';
@@ -894,9 +894,9 @@ EOF;
 			return $return;
 		}
 		if ($value == '')
-			return (!empty($pines->request_component) || !empty($pines->request_action));
+			return (!empty($_->request_component) || !empty($_->request_action));
 		elseif ($value == '!')
-			return (empty($pines->request_component) && empty($pines->request_action));
+			return (empty($_->request_component) && empty($_->request_action));
 		if (
 				strpos($value, '&') !== false ||
 				strpos($value, '|') !== false ||
@@ -905,7 +905,7 @@ EOF;
 				strpos($value, ')') !== false
 			)
 			return $this->simple_parse($value, array($this, 'check_request'));
-		return $pines->request_component == $value || ("{$pines->request_component}/{$pines->request_action}" == $value);
+		return $_->request_component == $value || ("{$_->request_component}/{$_->request_action}" == $value);
 	}
 
 	// Is this safe? Consider that users can use dependencies to discover things...
@@ -942,7 +942,7 @@ EOF;
 	 * @return bool|array The result of the check, or the help array.
 	 */
 	private function check_service($value, $help = false) {
-		global $pines;
+		global $_;
 		if ($help) {
 			$return = array();
 			$return['cname'] = 'Service Checker';
@@ -971,7 +971,7 @@ EOF;
 				strpos($value, ')') !== false
 			)
 			return $this->simple_parse($value, array($this, 'check_service'));
-		return key_exists($value, $pines->services);
+		return key_exists($value, $_->services);
 	}
 
 	/**
@@ -986,7 +986,7 @@ EOF;
 	 *
 	 * For example:
 	 * <pre>
-	 * simple_parse('!val1&(val2|!val3|(val2&!val4))', array($pines->com_mycomponent, 'my_checking_method'));
+	 * simple_parse('!val1&(val2|!val3|(val2&!val4))', array($_->com_mycomponent, 'my_checking_method'));
 	 * </pre>
 	 *
 	 * @param string $value The logic statement.

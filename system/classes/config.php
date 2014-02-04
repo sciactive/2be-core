@@ -8,15 +8,15 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
  * A dynamic config class.
  *
  * Components' configuration will be loaded into their variables. In other
- * words, when you access $pines->config->com_xmlparser->strict, if
- * $pines->config->com_xmlparser is empty, the configuration file for
+ * words, when you access $_->config->com_xmlparser->strict, if
+ * $_->config->com_xmlparser is empty, the configuration file for
  * com_xmlparser class will attempt to be loaded into it.
  *
  * The "template" variable will load the current template's configuration.
@@ -63,9 +63,9 @@ class config {
 	 * @return mixed The value of the variable or nothing if it doesn't exist.
 	 */
 	public function &__get($name) {
-		global $pines;
+		global $_;
 		if ($name == 'template') {
-			$name = $pines->current_template;
+			$name = $_->current_template;
 			$is_template = true;
 			if (isset($this->$name)) {
 				$this->template =& $this->$name;
@@ -117,7 +117,7 @@ class config {
 	 * @return bool
 	 */
 	public function __isset($name) {
-		global $pines;
+		global $_;
 		if (substr($name, 0, 4) == 'com_') {
 			if ( file_exists("components/$name/defaults.php") ) {
 				$config_array = include("components/$name/defaults.php");
@@ -141,7 +141,7 @@ class config {
 	 * @return array An array of component names.
 	 */
 	public function get_default_components() {
-		global $pines;
+		global $_;
 		$return = array();
 		foreach (pines_scandir('components/') as $cur_component) {
 			if ( file_exists("components/{$cur_component}/actions/default.php") )

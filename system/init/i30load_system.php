@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 // Strip magic quotes.
@@ -77,13 +77,13 @@ if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
  * The main object for WonderPHP.
  *
  * This object is used to hold everything from WonderPHP's settings, to component
- * functions. Components' configuration files will be parsed into $pines->config
- * under the name of their component. Such as $pines->config->com_xmlparser.
- * Components' classes will be automatically loaded into $pines under their name
+ * functions. Components' configuration files will be parsed into $_->config
+ * under the name of their component. Such as $_->config->com_xmlparser.
+ * Components' classes will be automatically loaded into $_ under their name
  * when the variable is *first used*. For example, com_xmlparser will be loaded
- * the first time $pines->com_xmlparser is accessed.
+ * the first time $_->com_xmlparser is accessed.
  *
- * $pines also holds WonderPHP's standard classes/objects (called "services"), which
+ * $_ also holds WonderPHP's standard classes/objects (called "services"), which
  * include:
  *
  * WonderPHP Core:
@@ -114,10 +114,10 @@ if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
  * this in an init file (like i10set.php):
  *
  * <code>
- * $pines->log_manager = 'com_emaillogs';
+ * $_->log_manager = 'com_emaillogs';
  * </code>
  *
- * @global pines $pines
+ * @global pines $_
  */
-$pines = new pines;
+$_ = new pines;
 if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');

@@ -19,15 +19,15 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines *//* @var $this module */
+/* @var $_ pines *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 
-if (!$pines->depend->check('component', 'com_pform&com_jquery&com_bootstrap&com_pgrid&com_markdown')) {
+if (!$_->depend->check('component', 'com_pform&com_jquery&com_bootstrap&com_pgrid&com_markdown')) {
 	echo 'The condition editor requires com_pform, com_jquery, com_bootstrap, com_pgrid, and com_markdown.';
 	return;
 }
 
-$pines->com_pgrid->load();
+$_->com_pgrid->load();
 ?>
 <div id="p_muid_editor" class="condition_editor">
 	<script type="text/javascript">
@@ -131,7 +131,7 @@ $pines->com_pgrid->load();
 			update_conditions();
 
 			condition_dialog.find("input[name=cur_condition_type]").autocomplete({
-				"source": <?php echo (string) json_encode((array) array_keys($pines->depend->checkers)); ?>
+				"source": <?php echo (string) json_encode((array) array_keys($_->depend->checkers)); ?>
 			});
 		});
 	</script>
@@ -152,9 +152,9 @@ $pines->com_pgrid->load();
 		</tbody>
 	</table>
 	<input type="hidden" name="<?php echo empty($this->input_name) ? 'conditions' : h($this->input_name); ?>" id="p_muid_conditions" />
-	<?php foreach (array_keys($pines->depend->checkers) as $cur_checker) {
+	<?php foreach (array_keys($_->depend->checkers) as $cur_checker) {
 		$checker_html = h($cur_checker);
-		$help = $pines->depend->help($cur_checker);
+		$help = $_->depend->help($cur_checker);
 		if ($help) { ?>
 	<div class="modal hide" id="p_muid_checker_<?php echo $checker_html; ?>">
 		<div class="modal-header">
@@ -163,17 +163,17 @@ $pines->com_pgrid->load();
 		</div>
 		<div class="modal-body">
 			<?php if (!empty($help['description'])) { ?>
-			<div><?php echo $pines->com_markdown->transform($help['description']); ?></div>
+			<div><?php echo $_->com_markdown->transform($help['description']); ?></div>
 			<?php } if (!empty($help['syntax'])) { ?>
 			<div class="page-header">
 				<h3>Syntax</h3>
 			</div>
-			<div><?php echo $pines->com_markdown->transform($help['syntax']); ?></div>
+			<div><?php echo $_->com_markdown->transform($help['syntax']); ?></div>
 			<?php } if (!empty($help['examples'])) { ?>
 			<div class="page-header">
 				<h3>Examples</h3>
 			</div>
-			<div><?php echo $pines->com_markdown->transform($help['examples']); ?></div>
+			<div><?php echo $_->com_markdown->transform($help['examples']); ?></div>
 			<?php } if ($help['simple_parse']) { ?>
 			<div class="page-header">
 				<h3>Simple Logic</h3>
@@ -208,10 +208,10 @@ $pines->com_pgrid->load();
 				</div>
 				<div><?php
 				$checker_links = array();
-				foreach (array_keys($pines->depend->checkers) as $cur_checker) {
+				foreach (array_keys($_->depend->checkers) as $cur_checker) {
 					$checker_html = h($cur_checker);
 					$checker_js = h(json_encode($cur_checker));
-					$help = $pines->depend->help($cur_checker);
+					$help = $_->depend->help($cur_checker);
 					$title = h($help['cname']);
 					if ($help)
 						$checker_links[] = "<a title=\"$title\" href=\"javascript:void(0);\" onclick=\"\$('#p_muid_cur_condition_type').val($checker_js);\">$checker_html</a> <a href=\"#p_muid_checker_$checker_html\" data-toggle=\"modal\"><i class=\"icon-info-sign\"></i></a>";

@@ -8,15 +8,15 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
  * A dynamic info class.
  *
  * Components' info will be loaded into their variables. In other words, when
- * you access $pines->info->com_xmlparser->version, if
- * $pines->info->com_xmlparser is empty, the info file for com_xmlparser class
+ * you access $_->info->com_xmlparser->version, if
+ * $_->info->com_xmlparser is empty, the info file for com_xmlparser class
  * will attempt to be loaded into it.
  *
  * The "template" variable will load the current template's info.
@@ -47,9 +47,9 @@ class info {
 	 * @return mixed The value of the variable or nothing if it doesn't exist.
 	 */
 	public function &__get($name) {
-		global $pines;
+		global $_;
 		if ($name == 'template') {
-			$name = $pines->current_template;
+			$name = $_->current_template;
 			$is_template = true;
 			if (isset($this->$name)) {
 				$this->template =& $this->$name;
@@ -96,7 +96,7 @@ class info {
 	 * @return bool
 	 */
 	public function __isset($name) {
-		global $pines;
+		global $_;
 		if (substr($name, 0, 4) == 'com_') {
 			if ( file_exists("components/$name/info.php") ) {
 				$info_array = include("components/$name/info.php");

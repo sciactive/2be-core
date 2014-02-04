@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -17,7 +17,7 @@ defined('P_RUN') or die('Direct access prohibited');
  * @param string $class_name The class name.
  */
 function wonder_autoload($class_name) {
-	global $pines;
+	global $_;
 	// When session_start() tries to recover hooked objects, we need to make
 	// sure their equivalent hooked classes exist.
 	if (strpos($class_name, 'hook_override_') === 0) {
@@ -36,43 +36,43 @@ function wonder_autoload($class_name) {
 		}
 		if (P_SCRIPT_TIMING) pines_print_time("Preparing Class [$class_name]");
 		$new_class = substr($class_name, 14);
-		$pines->hook->hook_object($new_class, "{$new_class}->", false);
+		$_->hook->hook_object($new_class, "{$new_class}->", false);
 		if (P_SCRIPT_TIMING) pines_print_time("Preparing Class [$class_name]");
 		return;
 	}
-	if (key_exists($class_name, $pines->class_files)) {
+	if (key_exists($class_name, $_->class_files)) {
 		if (P_SCRIPT_TIMING) pines_print_time("Load [$class_name]");
-		include($pines->class_files[$class_name]);
+		include($_->class_files[$class_name]);
 		if (P_SCRIPT_TIMING) pines_print_time("Load [$class_name]");
 	}
 }
 
 spl_autoload_register('wonder_autoload');
 
-if (P_SCRIPT_TIMING) pines_print_time('Hook $pines');
-// Load the hooks for $pines.
-$pines->hook->hook_object($pines, '$pines->');
-if (P_SCRIPT_TIMING) pines_print_time('Hook $pines');
+if (P_SCRIPT_TIMING) pines_print_time('Hook $_');
+// Load the hooks for $_.
+$_->hook->hook_object($_, '$_->');
+if (P_SCRIPT_TIMING) pines_print_time('Hook $_');
 
 if (P_SCRIPT_TIMING) pines_print_time('Display Pending Notices');
 // Check the session for notices and errors awaiting after a redirect.
 if (function_exists('session_status') ? session_status() === PHP_SESSION_ACTIVE : ini_get('session.auto_start') !== 0)
-	$pines->session('close');
-$pines->session();
+	$_->session('close');
+$_->session();
 if (idx($_SESSION, 'p_notices')) {
 	foreach ((array) $_SESSION['p_notices'] as $_p_cur_notice) {
-		$pines->page->notice($_p_cur_notice);
+		$_->page->notice($_p_cur_notice);
 	}
-	$pines->session('write');
+	$_->session('write');
 	unset($_SESSION['p_notices'], $_p_cur_notice);
-	$pines->session('close');
+	$_->session('close');
 }
 if (idx($_SESSION, 'p_errors')) {
 	foreach ((array) $_SESSION['p_errors'] as $_p_cur_error) {
-		$pines->page->error($_p_cur_error);
+		$_->page->error($_p_cur_error);
 	}
-	$pines->session('write');
+	$_->session('write');
 	unset($_SESSION['p_errors'], $_p_cur_error);
-	$pines->session('close');
+	$_->session('close');
 }
 if (P_SCRIPT_TIMING) pines_print_time('Display Pending Notices');

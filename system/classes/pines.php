@@ -8,14 +8,14 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
- * A dynamic component loading class. The class for the $pines object.
+ * A dynamic component loading class. The class for the $_ object.
  *
  * Component classes will be automatically loaded into their variables. In other
- * words, when you call $pines->com_xmlparser->parse(), if $pines->com_xmlparser
+ * words, when you call $_->com_xmlparser->parse(), if $_->com_xmlparser
  * is empty, the com_xmlparser class will attempt to be loaded into it. It will
  * then be hooked by the hook manager.
  *
@@ -225,19 +225,19 @@ class pines {
 	 */
 	public function &__get($name) {
 		if (substr($name, 0, 4) == 'com_') {
-			global $pines;
+			global $_;
 			try {
 				$this->$name = new $name;
-				$pines->hook->hook_object($this->$name, "\$pines->{$name}->");
+				$_->hook->hook_object($this->$name, "\$_->{$name}->");
 				return $this->$name;
 			} catch (Exception $e) {
 				return;
 			}
 		}
 		if (in_array($name, $this->service_names) && isset($this->services[$name])) {
-			global $pines;
+			global $_;
 			$this->$name = new $this->services[$name];
-			$pines->hook->hook_object($this->$name, "\$pines->{$name}->");
+			$_->hook->hook_object($this->$name, "\$_->{$name}->");
 			return $this->$name;
 		}
 	}
@@ -254,9 +254,9 @@ class pines {
 	 * @return bool
 	 */
 	public function __isset($name) {
-		global $pines;
+		global $_;
 		if (substr($name, 0, 4) == 'com_')
-			return (class_exists($name) || ((array) $pines->class_files === $pines->class_files && isset($pines->class_files[$name])));
+			return (class_exists($name) || ((array) $_->class_files === $_->class_files && isset($_->class_files[$name])));
 		return (in_array($name, $this->service_names) && isset($this->services[$name]));
 	}
 
@@ -293,7 +293,7 @@ class pines {
 	 * @throws HttpClientException Throws a 404 error if the action doesn't exist.
 	 */
 	public function action($component = null, $action = null) {
-		global $pines;
+		global $_;
 		// Fill in any empty vars.
 		if ( empty($component) ) $component = $this->config->default_component;
 		if ( empty($action) ) $action = 'default';

@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 if (P_SCRIPT_TIMING) pines_print_time('Define Basic Functions');
@@ -93,7 +93,7 @@ function pines_sort_by_filename($a, $b) {
  */
 
 /**
- * Shortcut to $pines->action().
+ * Shortcut to $_->action().
  *
  * @uses pines::action() Forwards parameters and returns the result.
  * @param string $component The component in which the action resides.
@@ -101,36 +101,36 @@ function pines_sort_by_filename($a, $b) {
  * @return mixed The value returned by the action.
  */
 function pines_action($component = null, $action = null) {
-	global $pines;
-	return $pines->action($component, $action);
+	global $_;
+	return $_->action($component, $action);
 }
 
 /**
- * Shortcut to $pines->redirect().
+ * Shortcut to $_->redirect().
  *
  * @uses pines::redirect() Forwards parameters and returns the result.
  * @param string $url The URL to send the user to.
  * @param int $code The HTTP code to send to the browser.
  */
 function pines_redirect($url, $code = 303) {
-	global $pines;
-	$pines->redirect($url, $code);
+	global $_;
+	$_->redirect($url, $code);
 }
 
 /**
- * Shortcut to $pines->format_content().
+ * Shortcut to $_->format_content().
  *
  * @uses pines::format_content() Forwards parameters and returns the result.
  * @param string $content The content to format.
  * @return string The formatted content.
  */
 function format_content($content) {
-	global $pines;
-	return $pines->format_content($content);
+	global $_;
+	return $_->format_content($content);
 }
 
 /**
- * Shortcut to $pines->format_date().
+ * Shortcut to $_->format_date().
  *
  * @uses pines::format_date() Forwards parameters and returns the result.
  * @param int $timestamp The timestamp to format.
@@ -140,12 +140,12 @@ function format_content($content) {
  * @return string The formatted date.
  */
 function format_date($timestamp, $type = 'full_sort', $format = '', $timezone = null) {
-	global $pines;
-	return $pines->format_date($timestamp, $type, $format, $timezone);
+	global $_;
+	return $_->format_date($timestamp, $type, $format, $timezone);
 }
 
 /**
- * Shortcut to $pines->format_date_range().
+ * Shortcut to $_->format_date_range().
  *
  * @uses pines::format_date_range() Forwards parameters and returns the result.
  * @param int $start_timestamp The timestamp of the beginning of the date range.
@@ -155,58 +155,58 @@ function format_date($timestamp, $type = 'full_sort', $format = '', $timezone = 
  * @return string The formatted date range.
  */
 function format_date_range($start_timestamp, $end_timestamp, $format = null, $timezone = null) {
-	global $pines;
-	return $pines->format_date_range($start_timestamp, $end_timestamp, $format, $timezone);
+	global $_;
+	return $_->format_date_range($start_timestamp, $end_timestamp, $format, $timezone);
 }
 
 /**
- * Shortcut to $pines->format_fuzzy_time().
+ * Shortcut to $_->format_fuzzy_time().
  *
  * @uses pines::format_fuzzy_time() Forwards parameters and returns the result.
  * @param int $timestamp The timestamp to format.
  * @return string Fuzzy time string.
  */
 function format_fuzzy_time($timestamp) {
-	global $pines;
-	return $pines->format_fuzzy_time($timestamp);
+	global $_;
+	return $_->format_fuzzy_time($timestamp);
 }
 
 /**
- * Shortcut to $pines->format_phone().
+ * Shortcut to $_->format_phone().
  *
  * @uses pines::format_phone() Forwards parameters and returns the result.
  * @param string $number The phone number to format.
  * @return string The formatted phone number.
  */
 function format_phone($number) {
-	global $pines;
-	return $pines->format_phone($number);
+	global $_;
+	return $_->format_phone($number);
 }
 
 /**
- * Shortcut to $pines->page->error().
+ * Shortcut to $_->page->error().
  *
  * @uses page::error() Forwards parameters and returns the result.
  * @param string $text Information to display to the user.
  */
 function pines_error($text) {
-	global $pines;
-	$pines->page->error($text);
+	global $_;
+	$_->page->error($text);
 }
 
 /**
- * Shortcut to $pines->page->notice().
+ * Shortcut to $_->page->notice().
  *
  * @uses page::notice() Forwards parameters and returns the result.
  * @param string $text Information to display to the user.
  */
 function pines_notice($text) {
-	global $pines;
-	$pines->page->notice($text);
+	global $_;
+	$_->page->notice($text);
 }
 
 /**
- * Shortcut to $pines->user_manager->gatekeeper().
+ * Shortcut to $_->user_manager->gatekeeper().
  *
  * The gatekeeper() function should be defined in whatever component is taking
  * over user management. gatekeeper() without arguments should return false if
@@ -222,18 +222,18 @@ function pines_notice($text) {
  * @return bool The result is returned if there is a user management component, otherwise it returns true.
  */
 function gatekeeper($ability = null, $user = null) {
-	global $pines;
+	global $_;
 	static $user_manager;
 	if (!isset($user_manager)) {
-		if (!isset($pines->user_manager))
+		if (!isset($_->user_manager))
 			return true;
-		$user_manager =& $pines->user_manager;
+		$user_manager =& $_->user_manager;
 	}
 	return $user_manager->gatekeeper($ability, $user);
 }
 
 /**
- * Shortcut to $pines->user_manager->punt_user().
+ * Shortcut to $_->user_manager->punt_user().
  *
  * The punt_user() function should be defined in whatever component is taking
  * over user management. punt_user() must always end the execution of the
@@ -246,16 +246,16 @@ function gatekeeper($ability = null, $user = null) {
  * @return bool The result is returned if there is a user management component, otherwise it returns true.
  */
 function punt_user($message = null, $url = null) {
-	global $pines;
-	if (!isset($pines->user_manager)) {
+	global $_;
+	if (!isset($_->user_manager)) {
 		header('Location: '.pines_url());
 		exit($message);
 	}
-	$pines->user_manager->punt_user($message, $url);
+	$_->user_manager->punt_user($message, $url);
 }
 
 /**
- * Shortcut to $pines->depend->check().
+ * Shortcut to $_->depend->check().
  *
  * @uses depend::check() Forwards parameters and returns the result.
  * @param string $type The type of dependency to be checked.
@@ -263,54 +263,54 @@ function punt_user($message = null, $url = null) {
  * @return bool The result of the dependency check.
  */
 function pines_depend($type, $value) {
-	global $pines;
-	if (!isset($pines->depend))
+	global $_;
+	if (!isset($_->depend))
 		return true;
-	return $pines->depend->check($type, $value);
+	return $_->depend->check($type, $value);
 }
 
 /**
- * Shortcut to $pines->log_manager->log().
+ * Shortcut to $_->log_manager->log().
  *
  * @uses log_manager_interface::log() Forwards parameters and returns the result.
  * @return bool The result is returned if there is a log management component, otherwise it returns true.
  */
 function pines_log() {
-	global $pines;
+	global $_;
 	static $log_manager;
 	if (!isset($log_manager)) {
-		if (!isset($pines->log_manager))
+		if (!isset($_->log_manager))
 			return true;
-		$log_manager =& $pines->log_manager;
+		$log_manager =& $_->log_manager;
 	}
 	$args = func_get_args();
 	return call_user_func_array(array($log_manager, 'log'), $args);
 }
 
 /**
- * Shortcut to $pines->session().
+ * Shortcut to $_->session().
  *
  * @uses pines::session() Forwards parameters and returns the result.
  * @param string $option The type of access or action requested.
  */
 function pines_session($option = 'read') {
-	global $pines;
-	return $pines->session($option);
+	global $_;
+	return $_->session($option);
 }
 
 /**
- * Shortcut to $pines->template->url().
+ * Shortcut to $_->template->url().
  *
  * @uses template_interface::url() Forwards parameters and returns the result.
  * @return bool The result is returned if there is a template, otherwise it returns null.
  */
 function pines_url() {
-	global $pines;
+	global $_;
 	static $template;
 	if (!isset($template)) {
-		if (!isset($pines->template))
+		if (!isset($_->template))
 			return null;
-		$template =& $pines->template;
+		$template =& $_->template;
 	}
 	$args = func_get_args();
 	return call_user_func_array(array($template, 'url'), $args);

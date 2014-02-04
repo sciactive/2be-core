@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 $templates = pines_scandir('templates/');
@@ -117,7 +117,7 @@ return array(
 		'cname' => 'Default Component',
 		'description' => 'This component should have a "default" action. That action will be called when the user first accesses the system. If an action is specified, but no component, this one will be used.',
 		'value' => 'com_dash',
-		'options' => is_callable(array($this, 'get_default_components')) ? $this->get_default_components() : $pines->config->get_default_components(),
+		'options' => is_callable(array($this, 'get_default_components')) ? $this->get_default_components() : $_->config->get_default_components(),
 		'peruser' => true,
 	),
 	array(

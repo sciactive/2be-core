@@ -8,7 +8,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -50,16 +50,16 @@ class menu {
 	 * Parse the entries and build the menus.
 	 *
 	 * render() will read and process menu dependencies using
-	 * $pines->depend->check(), and add each menu to a module in its proper
-	 * position. It will then call $pines->template->menu() and give the menu
+	 * $_->depend->check(), and add each menu to a module in its proper
+	 * position. It will then call $_->template->menu() and give the menu
 	 * array as an object for each menu. It is the current template's job to
 	 * return the code that gets placed into the module's content.
 	 *
 	 * It will remove entries whose dependencies aren't met and ['path'], and
-	 * call $pines->template->url with the parameters found in ['href']
+	 * call $_->template->url with the parameters found in ['href']
 	 * variables, if they are an array.
 	 *
-	 * This is an example of the array passed to $pines->template->menu():
+	 * This is an example of the array passed to $_->template->menu():
 	 *
 	 * <pre>
 	 * Array (
@@ -95,7 +95,7 @@ class menu {
 	 * </pre>
 	 */
 	public function render() {
-		global $pines;
+		global $_;
 		// Remember if we've found a URL match.
 		$found_exact_match = false;
 		$found_close_match = false;
@@ -108,7 +108,7 @@ class menu {
 				foreach ($cur_entry['depend'] as $key => &$value) {
 					if ($key == 'children')
 						continue;
-					if (!$pines->depend->check($key, $value)) {
+					if (!$_->depend->check($key, $value)) {
 						$notmet = true;
 						break;
 					}
@@ -119,7 +119,7 @@ class menu {
 			}
 			// Transform URL arrays into actual URLs.
 			if (isset($cur_entry['href']) && (array) $cur_entry['href'] === $cur_entry['href'])
-				$cur_entry['href'] = call_user_func_array(array($pines->template, 'url'), $cur_entry['href']);
+				$cur_entry['href'] = call_user_func_array(array($_->template, 'url'), $cur_entry['href']);
 			// Now determine if this item is the current page.
 			if (!$found_exact_match && $cur_entry['href'] === idx($_SERVER, 'REQUEST_URI')) {
 				// This is an exact match URL.
@@ -162,7 +162,7 @@ class menu {
 			$module = new module('system', 'null', $cur_menu[0]['position']);
 			if (isset($cur_menu[0]['text']))
 				$module->title = $cur_menu[0]['text'];
-			$module->content($pines->template->menu($cur_menu));
+			$module->content($_->template->menu($cur_menu));
 		}
 	}
 
