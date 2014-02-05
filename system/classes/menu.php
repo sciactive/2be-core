@@ -74,20 +74,20 @@ class menu {
 	 *             [components] => Array (
 	 *                     [0] => Array (
 	 *                             [text] => Components
-	 *                             [href] => /pines/index.php/configure/list/
+	 *                             [href] => /wonder/index.php/configure/list/
 	 *                         )
 	 *                 )
 	 *         )
 	 *     [myaccount] => Array (
 	 *             [0] => Array (
 	 *                     [text] => My Account
-	 *                     [href] => /pines/index.php/user/editself/
+	 *                     [href] => /wonder/index.php/user/editself/
 	 *                 )
 	 *         )
 	 *     [logout] => Array (
 	 *             [0] => Array (
 	 *                     [text] => Logout
-	 *                     [href] => /pines/index.php/user/logout/
+	 *                     [href] => /wonder/index.php/user/logout/
 	 *                     [onclick] => return confirm("Are you sure?");
 	 *                 )
 	 *         )
