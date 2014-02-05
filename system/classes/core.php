@@ -117,7 +117,7 @@ class core {
 	public $action;
 
 	/**
-	 * Set up the Pines object.
+	 * Set up the core object.
 	 */
 	public function __construct() {
 		if (P_SCRIPT_TIMING) pines_print_time('Load the WonderPHP base system services.');
