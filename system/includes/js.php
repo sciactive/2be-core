@@ -3,7 +3,7 @@
  * Provide the default JavaScript files.
  *
  * This file also fills in the full_location and rela_location variables in the
- * JavaScript pines object and includes a JSON object, if one is not available.
+ * JavaScript $_ object and includes a JSON object, if one is not available.
  *
  * @package Core
  * @license http://www.gnu.org/licenses/agpl-3.0.html
@@ -23,7 +23,7 @@ header('Vary: Accept-Encoding');
 header('Pragma: ');
 header('X-Powered-By: ');
 
-$mod_date = filemtime('pines.min.js');
+$mod_date = filemtime('core.min.js');
 $etag = dechex(crc32($mod_date));
 
 if (
@@ -37,10 +37,10 @@ if (
 }
 
 $output =
-file_get_contents('pines.min.js')."\n".
-'pines.full_location = "http'.((idx($_SERVER, 'HTTPS') == 'on') ? 's://' : '://').idx($_SERVER, 'HTTP_HOST').substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), 'system/includes/js.php'))."\"\n".
-'pines.rela_location = "'.substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), 'system/includes/js.php'))."\"\n".
-"var JSON;JSON||pines.loadjs(pines.rela_location+\"system/includes/json2.min.js\");\n";
+file_get_contents('core.min.js')."\n".
+'$_.full_location = "http'.((idx($_SERVER, 'HTTPS') == 'on') ? 's://' : '://').idx($_SERVER, 'HTTP_HOST').substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), 'system/includes/js.php'))."\"\n".
+'$_.rela_location = "'.substr(idx($_SERVER, 'PHP_SELF'), 0, strripos(idx($_SERVER, 'PHP_SELF'), 'system/includes/js.php'))."\"\n".
+"var JSON;JSON||\$_.loadjs(\$_.rela_location+\"system/includes/json2.min.js\");\n";
 
 header('Content-Length: '.strlen($output));
 header('Last-Modified: '.gmdate('r', $mod_date));

@@ -31,7 +31,7 @@ $_->com_pgrid->load();
 ?>
 <div id="p_muid_editor" class="condition_editor">
 	<script type="text/javascript">
-		pines(function(){
+		$_(function(){
 			// Conditions
 			var conditions = $("#p_muid_conditions"),
 				conditions_table = $("#p_muid_table"),
@@ -58,8 +58,8 @@ $_->com_pgrid->load();
 						double_click: true,
 						click: function(e, rows){
 							cur_condition = rows;
-							condition_dialog.find("input[name=cur_condition_type]").val(pines.unsafe(rows.pgrid_get_value(1)))
-							.end().find("input[name=cur_condition_value]").val(pines.unsafe(rows.pgrid_get_value(2)))
+							condition_dialog.find("input[name=cur_condition_type]").val($_.unsafe(rows.pgrid_get_value(1)))
+							.end().find("input[name=cur_condition_value]").val($_.unsafe(rows.pgrid_get_value(2)))
 							.end().dialog('open');
 						}
 					},
@@ -99,20 +99,20 @@ $_->com_pgrid->load();
 									dupe = true;
 							});
 							if (dupe) {
-								pines.notice('There is already a condition of that type.');
+								$_.notice('There is already a condition of that type.');
 								return;
 							}
 							var new_condition = [{
 								key: null,
 								values: [
-									pines.safe(cur_condition_type),
-									pines.safe(cur_condition_value)
+									$_.safe(cur_condition_type),
+									$_.safe(cur_condition_value)
 								]
 							}];
 							conditions_table.pgrid_add(new_condition);
 						} else {
-							cur_condition.pgrid_set_value(1, pines.safe(cur_condition_type));
-							cur_condition.pgrid_set_value(2, pines.safe(cur_condition_value));
+							cur_condition.pgrid_set_value(1, $_.safe(cur_condition_type));
+							cur_condition.pgrid_set_value(2, $_.safe(cur_condition_value));
 						}
 						$(this).dialog('close');
 					}

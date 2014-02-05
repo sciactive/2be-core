@@ -23,17 +23,17 @@ if (!Array.prototype.indexOf) {
 	};
 }
 
-// If pines doesn't exist, make it.
-if (!window.pines) {
+// If $_ doesn't exist, make it.
+if (!window.$_) {
 (function(window, document){
 
-// Shortcut to pines.ready.
-var pines = function(fn){pines.ready(fn)};
+// Shortcut to $_.ready.
+var $_ = function(fn){$_.ready(fn)};
 
-pines.full_location="";
-pines.rela_location="";
+$_.full_location="";
+$_.rela_location="";
 // Escape some text to put in HTML.
-pines.safe=function(unsafe){
+$_.safe=function(unsafe){
 	if (typeof unsafe == "undefined")
 		return "";
 	var find = [/&/g, /\"/g, /\'/g, /</g, />/g], repl = ["&amp;", '&quot;', "&#039;", "&lt;", "&gt;"], r = String(unsafe);
@@ -42,7 +42,7 @@ pines.safe=function(unsafe){
 	return r;
 }
 // Unescape some text.
-pines.unsafe=function(safe){
+$_.unsafe=function(safe){
 	if (typeof safe == "undefined")
 		return "";
 	var find = [/&amp;/g, /&quot;/g, /&#039;/g, /&lt;/g, /&gt;/g], repl = ["&", '"', "'", "<", ">"], r = String(safe);
@@ -51,7 +51,7 @@ pines.unsafe=function(safe){
 	return r;
 }
 // Cause the browser to go to a URL. (Just like the user clicked a link.)
-pines.get=function(url, params, target){
+$_.get=function(url, params, target){
 	if (params) {
 		url += (url.indexOf("?") == -1) ? "?" : "&";
 		var parray = [];
@@ -77,7 +77,7 @@ pines.get=function(url, params, target){
 		window.open(url, target);
 };
 // Cause the browser to POST data. (Just like the user submitted a form.)
-pines.post=function(url, params, target){
+$_.post=function(url, params, target){
 	var form = document.createElement("form");
 	form.action = url;
 	form.method = "POST";
@@ -97,15 +97,15 @@ pines.post=function(url, params, target){
 	document.body.removeChild(form);
 };
 // Determine whether JavaScript loading is paused.
-pines.paused=function(){
+$_.paused=function(){
 	return _paused;
 };
 // Wait to load pending JavaScript.
-pines.pause=function(){
+$_.pause=function(){
 	_paused = true;
 };
 // Continue loading any pending JavaScript.
-pines.play=function(){
+$_.play=function(){
 	_paused = false;
 	if (_loadnext_ready) {
 		_loadnext_ready = false;
@@ -115,20 +115,20 @@ pines.play=function(){
 		_ready();
 };
 // Executes a function after all JS files are loaded and the DOM is ready.
-pines.ready=function(fn){
+$_.ready=function(fn){
 	_rdpending.push(fn);
 	// If the DOM is loaded, run right now.
 	if (_domloaded)
 		_ready();
 };
 // Executes a function in turn with the loading JS files.
-pines.load=function(fn){
+$_.load=function(fn){
 	_pendingjs.push(fn);
 	if (_pendingjs.length==1)
 		_loadnext();
 };
 // Loads JavaScript files in turn.
-pines.loadjs=function(url, multiple, attrs){
+$_.loadjs=function(url, multiple, attrs){
 	if (_loadedjs.indexOf(url) > -1 && !multiple) return;
 	// Mark that the JS is loading.
 	_jsloaded = false;
@@ -147,7 +147,7 @@ pines.loadjs=function(url, multiple, attrs){
 	_loadedjs[_loadedjs.length]=url;
 };
 // Loads CSS files immediately.
-pines.loadcss=function(url, multiple, attrs){
+$_.loadcss=function(url, multiple, attrs){
 	if (_loadedcss.indexOf(url) > -1 && !multiple) return;
 	var n=document.createElement("link");
 	n.setAttribute("rel","stylesheet");
@@ -164,11 +164,11 @@ pines.loadcss=function(url, multiple, attrs){
 	_loadedcss[_loadedcss.length]=url;
 };
 // Notify the user.
-pines.notice=function(message, title){
+$_.notice=function(message, title){
 	alert((title ? title : "Notice") + "\n\n" + message);
 };
 // Show the user an error.
-pines.error=function(message, title){
+$_.error=function(message, title){
 	alert((title ? title : "Error") + "\n\n" + message);
 };
 
@@ -293,7 +293,7 @@ if (document.attachEvent) { // IE
 	window.addEventListener("load", function(){_domloaded = true;_ready();}, false);
 }
 
-window.pines = pines;
+window.$_ = $_;
 
 })(window, window.document);
 }
