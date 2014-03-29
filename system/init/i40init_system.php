@@ -16,7 +16,7 @@ defined('P_RUN') or die('Direct access prohibited');
  *
  * @param string $class_name The class name.
  */
-function wonder_autoload($class_name) {
+function _2be_autoload($class_name) {
 	global $_;
 	// When session_start() tries to recover hooked objects, we need to make
 	// sure their equivalent hooked classes exist.
@@ -47,7 +47,7 @@ function wonder_autoload($class_name) {
 	}
 }
 
-spl_autoload_register('wonder_autoload');
+spl_autoload_register('_2be_autoload');
 
 if (P_SCRIPT_TIMING) pines_print_time('Hook $_');
 // Load the hooks for $_.

@@ -1,4 +1,4 @@
-![2be](https://raw.github.com/sciactive/wonder-extras/master/logo/header-large.png)
+![2be](https://raw.github.com/sciactive/2be-extras/master/logo/header-large.png)
 =========================================================================================
 
 2be is an Enterprise PHP Application Framework, including a free **Content
