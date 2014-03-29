@@ -37,12 +37,12 @@ RewriteRule ^(.*)$ index.php [F,L]
 
 #  Uncomment following line if your webserver's URL
 #  is not directly related to physical file paths.
-#  Update Your WonderPHP Directory (just / for root)
+#  Update Your 2be Directory (just / for root)
 
 # RewriteBase /
 
 
-########## Begin - WonderPHP core SEF Section
+########## Begin - 2be core SEF Section
 #
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -50,4 +50,4 @@ RewriteCond %{REQUEST_URI} !^/index.php
 #RewriteCond %{REQUEST_URI} (/|\.php|\.html|\.htm|\.feed|\.pdf|\.raw|/[^.]*)$  [NC]
 RewriteRule (.*) index.php [L,QSA,NE]
 #
-########## End - WonderPHP core SEF Section
+########## End - 2be core SEF Section

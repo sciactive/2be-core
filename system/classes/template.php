@@ -25,7 +25,7 @@ class template implements template_interface {
 	 */
 	public $format = '';
 	/**
-	 * The editor CSS location, relative to WonderPHP's directory.
+	 * The editor CSS location, relative to 2be's directory.
 	 * @var string $editor_css
 	 */
 	public $editor_css = '';
@@ -47,7 +47,7 @@ class template implements template_interface {
 	 * Return a URL in the necessary format to be usable on the current
 	 * installation.
 	 *
-	 * url() is designed to work with the URL rewriting features of WonderPHP,
+	 * url() is designed to work with the URL rewriting features of 2be,
 	 * so it should be called whenever outputting a URL is required. If url() is
 	 * called with no parameters, it will return the URL of the index page.
 	 *
@@ -55,7 +55,7 @@ class template implements template_interface {
 	 * @param string $action The action the URL should point to.
 	 * @param array $params An array of parameters which should be part of the URL's query string.
 	 * @param bool $full_location Whether to return an absolute URL or a relative URL.
-	 * @return string The URL in a format to work with the current configuration of WonderPHP.
+	 * @return string The URL in a format to work with the current configuration of 2be.
 	 */
 	public function url($component = null, $action = null, $params = array(), $full_location = false) {
 		global $_;

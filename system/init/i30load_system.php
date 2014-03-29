@@ -72,21 +72,21 @@ include('system/classes/page.php');
 include('system/classes/template.php');
 if (P_SCRIPT_TIMING) pines_print_time('Load System Classes');
 
-if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
+if (P_SCRIPT_TIMING) pines_print_time('Load 2be');
 /**
- * The main object for WonderPHP.
+ * The main object for 2be.
  *
- * This object is used to hold everything from WonderPHP's settings, to component
+ * This object is used to hold everything from 2be's settings, to component
  * functions. Components' configuration files will be parsed into $_->config
  * under the name of their component. Such as $_->config->com_xmlparser.
  * Components' classes will be automatically loaded into $_ under their name
  * when the variable is *first used*. For example, com_xmlparser will be loaded
  * the first time $_->com_xmlparser is accessed.
  *
- * $_ also holds WonderPHP's standard classes/objects (called "services"), which
+ * $_ also holds 2be's standard classes/objects (called "services"), which
  * include:
  *
- * WonderPHP Core:
+ * 2be Core:
  *
  * - info - System and component info.
  * - config - System and component configuration.
@@ -98,7 +98,7 @@ if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
  * Provided by Components:
  *
  * - template - The current template's object.
- * - configurator - Manages configuration settings for WonderPHP and components.
+ * - configurator - Manages configuration settings for 2be and components.
  * - log_manager - Manages logging features.
  * - entity_manager - Manages data abstraction (entities).
  * - user_manager - Manages users, groups, and their permissions.
@@ -120,4 +120,4 @@ if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
  * @global core $_
  */
 $_ = new core;
-if (P_SCRIPT_TIMING) pines_print_time('Load WonderPHP');
+if (P_SCRIPT_TIMING) pines_print_time('Load 2be');

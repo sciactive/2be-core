@@ -1,6 +1,6 @@
 <?php
 /**
- * WonderPHP's information.
+ * 2be's information.
  *
  * @package Core
  * @license http://www.gnu.org/licenses/agpl-3.0.html
@@ -12,13 +12,13 @@
 defined('P_RUN') or die('Direct access prohibited');
 
 return array(
-	'name' => 'WonderPHP',
+	'name' => '2be',
 	'author' => 'SciActive',
 	'version' => '2.0.1dev',
 	'license' => 'http://www.gnu.org/licenses/agpl-3.0.html',
-	'website' => 'http://pinesframework.org/',
-	'short_description' => 'WonderPHP core system.',
-	'description' => 'The core system of the WonderPHP PHP framework.',
+	'website' => 'http://2be.io/',
+	'short_description' => '2be core system.',
+	'description' => 'The core system of the 2be PHP framework.',
 	'depend' => array(
 		'php' => '>=5.3.0'
 	),

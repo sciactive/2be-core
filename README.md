@@ -1,28 +1,29 @@
-![WonderPHP](https://raw.github.com/sciactive/wonder-extras/master/logo/header-large.png)
+![2be](https://raw.github.com/sciactive/wonder-extras/master/logo/header-large.png)
 =========================================================================================
 
-WonderPHP is an Enterprise PHP Application Framework, including a free **Content
+2be is an Enterprise PHP Application Framework, including a free **Content
 Management System**, **Point of Sale**, **Customer Relation Manager**, and
 **much more**. A lot of work, and many all nighters have gone into making
-WonderPHP a fantastic framework. We hope you enjoy using it as much as we do!
+2be a fantastic framework. We hope you enjoy using it as much as we do!
 
-WonderPHP is available **free of charge** under the terms of the GNU AGPL
+2be is available **free of charge** under the terms of the GNU AGPL
 Version 3.
 
-You can find more information about WonderPHP, including a live demo, at the
-[WonderPHP website](http://wonderphp.org/).
+You can find more information about 2be, including a live demo, at the
+[2be website](http://2be.io/).
 * This site may not be ready yet. *
 
 
-WonderPHP Around the Web
+2be Around the Web
 ------------------------
 
-* Follow [WonderPHP on Twitter](http://twitter.com/wonderphp).
-* Fork [WonderPHP on GitHub](http://github.com/sciactive).
-* Visit [WonderPHP](http://wonderphp.org/).
+* Follow [2be on Twitter](http://twitter.com/2be_io).
+* Fork [2be on GitHub](http://github.com/sciactive).
+* Visit [2be](http://2be.io/).
+* Visit [SciActive](http://sciactive.com/).
 
 
-More About WonderPHP
+More About 2be
 --------------------
 
 A full featured web application framework with an advanced object-relational
@@ -30,24 +31,24 @@ mapper, complex method hooking functionality, an advanced package management
 system, and MVC architecture. It emphasizes speed and flexible/extensible
 structures.
 
-WonderPHP sports an advanced package manager called WonderPHP Plaza which makes
+2be sports an advanced package manager called 2be Plaza which makes
 downloading and installing components and templates quick, easy, and secure.
 
-WonderPHP has a full featured Content Management System, Calendar, Instant
+2be has a full featured Content Management System, Calendar, Instant
 Messenger, File Manager, Point of Sale system, Customer Relation Manager, Human
 Resource Manager, Web Storefront, Loan Management System, and Internet Cafe
 Manager (just to name a few). With conditional configuration, it can run
 multiple websites from one installation.
 
 So basically, if you're a PHP developer looking to make a **kick ass webapp**,
-WonderPHP is for you! ;)
+2be is for you! ;)
 
-We're striving to make WonderPHP easy to learn, so if you're ready to start,
-check out the [contribute page](http://wonderphp.org/content/page/a-contribute/)
-to learn how you can start developing with WonderPHP.
+We're striving to make 2be easy to learn, so if you're ready to start,
+check out the [contribute page](http://2be.io/content/page/a-contribute/)
+to learn how you can start developing with 2be.
 
 
-WonderPHP Developer Credit
+2be Developer Credit
 --------------------------
 The only time we get to plug ourselves. :P
 

@@ -1,8 +1,8 @@
 <?php
 /**
- * The controller for WonderPHP's architecture.
+ * The controller for 2be's architecture.
  *
- * WonderPHP - an Enterprise PHP Application Framework
+ * 2be - an Enterprise PHP Application Framework
  * Copyright (C) 2008-2013  SciActive.com
  *
  * This program is free software: you can redistribute it and/or modify

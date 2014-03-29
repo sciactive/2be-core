@@ -14,6 +14,6 @@ defined('P_RUN') or die('Direct access prohibited');
 if (P_SCRIPT_TIMING) pines_print_time('System Quick Check');
 
 if (!function_exists('json_decode'))
-	die('WonderPHP requires the PHP JSON extension. Please install it before proceeding.');
+	die('2be requires the PHP JSON extension. Please install it before proceeding.');
 
 if (P_SCRIPT_TIMING) pines_print_time('System Quick Check');

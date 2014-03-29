@@ -1,9 +1,9 @@
                  -- Installation Instructions --
 
-This release of WonderPHP is stable and can be installed in a production
+This release of 2be is stable and can be installed in a production
 environment.
 
-## Requirements for WonderPHP ##
+## Requirements for 2be ##
 	* PHP (v5.3 and up)
 
 ## Requirements for the Database Backends ##
@@ -13,7 +13,7 @@ environment.
 	  significantly improve performance in most scenarios.)
 
 ## Installation Steps ##
-	1. Extract WonderPHP to your server.
+	1. Extract 2be to your server.
 	2. Go to its address in a browser.
 	3. Follow the steps to setup your database.
 	4. Register a new user, by selecting the "I'm new." option. The system will

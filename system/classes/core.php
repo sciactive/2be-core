@@ -31,12 +31,12 @@ defined('P_RUN') or die('Direct access prohibited');
  */
 class core {
 	/**
-	 * WonderPHP's and components' info.
+	 * 2be's and components' info.
 	 * @var info
 	 */
 	public $info;
 	/**
-	 * WonderPHP's and components' configuration.
+	 * 2be's and components' configuration.
 	 * @var config
 	 */
 	public $config;
@@ -120,14 +120,14 @@ class core {
 	 * Set up the core object.
 	 */
 	public function __construct() {
-		if (P_SCRIPT_TIMING) pines_print_time('Load the WonderPHP base system services.');
+		if (P_SCRIPT_TIMING) pines_print_time('Load the 2be base system services.');
 		$this->config = new config;
 		$this->info = new info;
 		$this->hook = new hook;
 		$this->depend = new depend;
 		$this->menu = new menu;
 		$this->page = new page;
-		if (P_SCRIPT_TIMING) pines_print_time('Load the WonderPHP base system services.');
+		if (P_SCRIPT_TIMING) pines_print_time('Load the 2be base system services.');
 
 		$this->load_system_config();
 
@@ -170,7 +170,7 @@ class core {
 			// If there's a query part, remove it.
 			if (strlen(idx($_SERVER, 'QUERY_STRING')))
 				$request_string = substr($request_string, 0, (strlen(idx($_SERVER, 'QUERY_STRING')) * -1) - 1);
-			// Remove the path to WonderPHP.
+			// Remove the path to 2be.
 			$request_string = substr($request_string, strlen($this->config->rela_location));
 			if ($request_string !== false) {
 				// Get rid of index.php/ at the beginning.
@@ -906,8 +906,8 @@ class core {
 	 *
 	 * Redirect the user to a new URL, while still displaying any pending
 	 * notices and errors. Keep in mind that notices and errors will only be
-	 * displayed if you redirect the user to a WonderPHP installation. (A query
-	 * string is appended to the URL with notice and error text, which WonderPHP
+	 * displayed if you redirect the user to a 2be installation. (A query
+	 * string is appended to the URL with notice and error text, which 2be
 	 * will display.)
 	 *
 	 * This function will inform the user that they are being redirected if
@@ -951,11 +951,11 @@ class core {
 	 * writing, and close or destroy it.
 	 *
 	 * Providing a method to open a session for reading allows asynchronous
-	 * calls to WonderPHP to work efficiently. PHP will not block during page
+	 * calls to 2be to work efficiently. PHP will not block during page
 	 * requests, so one page taking forever to load doesn't grind a user's whole
 	 * session to a halt.
 	 *
-	 * This method should be the only method sessions are accessed in WonderPHP.
+	 * This method should be the only method sessions are accessed in 2be.
 	 * This will allow maximum compatibility between components.
 	 *
 	 * $option can be one of the following:

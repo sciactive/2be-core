@@ -12,7 +12,7 @@
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
- * The WonderPHP menu system.
+ * The 2be menu system.
  * @package Core
  */
 class menu {

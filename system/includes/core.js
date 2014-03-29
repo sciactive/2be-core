@@ -1,5 +1,5 @@
 /*
- * WonderPHP JavaScript Object
+ * 2be JavaScript Object
  *
  * Copyright (c) 2010-2013 Hunter Perrin
  *

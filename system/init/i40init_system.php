@@ -1,6 +1,6 @@
 <?php
 /**
- * Initialize the WonderPHP system.
+ * Initialize the 2be system.
  *
  * @package Core
  * @license http://www.gnu.org/licenses/agpl-3.0.html

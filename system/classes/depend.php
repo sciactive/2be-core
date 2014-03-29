@@ -38,6 +38,7 @@ class depend {
 	 *
 	 * - ability (System abilities.)
 	 * - action (Current or requested action.)
+	 * - core (2be version.)
 	 * - class (Class exists.)
 	 * - component (Installed enabled components and version.)
 	 * - extension (PHP extension version.)
@@ -45,7 +46,6 @@ class depend {
 	 * - host (Server hostname.)
 	 * - option (Current or requested component.)
 	 * - php (PHP version.)
-	 * - core (WonderPHP version.)
 	 * - request (Requested component + action.)
 	 * - service (Available services.)
 	 */
@@ -85,9 +85,9 @@ class depend {
 
 	/**
 	 * Get a dependency checker's help documentation.
-	 * 
+	 *
 	 * The help array is an associative array with the following values:
-	 * 
+	 *
 	 * - cname - A common name (title) for the checker.
 	 * - description - A markdown formatted description of the checker.
 	 * - syntax - A markdown formatted guide for the syntax of the checker.
@@ -166,7 +166,7 @@ EOF;
 
 	/**
 	 * Check against the current or requested action.
-	 * 
+	 *
 	 * If value is only a '!', then only the requested action is checked. This
 	 * is because action will never be empty.
 	 *
@@ -340,16 +340,16 @@ an exclamation point before it to negate the check. There are four different
 syntaxes available:
 
 *	IP - Only matches one IP address.
-	
+
 	<pre>0.0.0.0</pre>
 *	CIDR - Matches a network using CIDR notation.
-	
+
 	<pre>0.0.0.0/24</pre>
 *	Subnet Mask - Matches a network using a subnet mask.
-	
+
 	<pre>0.0.0.0/255.255.255.0</pre>
 *	IP Range - Matches a range of IP addresses.
-	
+
 	<pre>0.0.0.0-0.0.0.255</pre>
 
 The string "{server_addr}" (without quotes) will be replaced by the server's IP
@@ -488,7 +488,7 @@ EOF;
 	}
 
 	/**
-	 * Check WonderPHP's version.
+	 * Check 2be's version.
 	 *
 	 * Operators should be placed before the version number to test. Such as,
 	 * ">=1.0.0". The available operators are:
@@ -511,9 +511,9 @@ EOF;
 		global $_;
 		if ($help) {
 			$return = array();
-			$return['cname'] = 'WonderPHP Version Checker';
+			$return['cname'] = '2be Version Checker';
 			$return['description'] = <<<'EOF'
-Check the version of WonderPHP running.
+Check the version of 2be running.
 EOF;
 			$return['syntax'] = <<<'EOF'
 Operators should be placed before the version number to test. Such as,
@@ -528,10 +528,10 @@ Operators should be placed before the version number to test. Such as,
 EOF;
 			$return['examples'] = <<<'EOF'
 >=1.0.0
-:	Check that WonderPHP is at least version 1.0.0.
+:	Check that 2be is at least version 1.0.0.
 
 <2
-:	Check that WonderPHP is less than version 2.
+:	Check that 2be is less than version 2.
 EOF;
 			$return['simple_parse'] = true;
 			return $return;
@@ -688,8 +688,8 @@ EOF;
 Check the hostname of the server.
 EOF;
 			$return['syntax'] = <<<'EOF'
-When you use WonderPHP to host multiple websites, you can use this checker to
-determine which website is being requested. If WonderPHP is running on a virtual
+When you use 2be to host multiple websites, you can use this checker to
+determine which website is being requested. If 2be is running on a virtual
 host, this will check the value defined for that virtual host.
 EOF;
 			$return['examples'] = <<<'EOF'
@@ -719,7 +719,7 @@ EOF;
 	 *
 	 * If value is only a '!', then only the requested component is checked.
 	 * This is because component will never be empty.
-	 * 
+	 *
 	 * Uses simple_parse() to provide simple logic.
 	 *
 	 * @access private
@@ -739,7 +739,7 @@ Check against the current or requested component.
 
 The requested component is what appears in the URL following "option=". If you
 have URL rewriting turned on, it will be the portion of the URL following the
-WonderPHP location, but will be missing the "com_". This check will check both the
+2be location, but will be missing the "com_". This check will check both the
 requested component and/or the currently running action's component.
 EOF;
 			$return['syntax'] = <<<'EOF'

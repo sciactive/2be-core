@@ -76,7 +76,7 @@ interface data_object_interface {
 	 * - url_edit - The same as above, but for editing.
 	 * - url_list - The URL where this object, and others like it, can be found.
 	 *   (E.g., to a list of users.)
-	 * - icon - The class to apply for a WonderPHP Icon representing this object.
+	 * - icon - The class to apply for a 2be Icon representing this object.
 	 * - image - The URL to an image representing this object.
 	 * 
 	 * @param string $type The type of information being requested.
@@ -135,7 +135,7 @@ interface able_object_interface extends data_object_interface {
 }
 
 /**
- * WonderPHP system users.
+ * 2be system users.
  * @package Core
  * @property int $guid The GUID of the user.
  * @property string $username The user's username.
@@ -245,7 +245,7 @@ interface user_interface extends able_object_interface {
 }
 
 /**
- * WonderPHP system groups.
+ * 2be system groups.
  *
  * Note: When delete() is called all descendants of this group will also be
  * deleted.
@@ -358,7 +358,7 @@ interface group_interface extends able_object_interface {
 }
 
 /**
- * A WonderPHP template.
+ * A 2be template.
  * @package Core
  * @property-read string $format The template's format.
  * @property-read string $editor_css The filename of a CSS file to use for editing content.
@@ -375,7 +375,7 @@ interface template_interface {
 	 * Return a URL in the necessary format to be usable on the current
 	 * installation.
 	 *
-	 * url() is designed to work with the URL rewriting features of WonderPHP,
+	 * url() is designed to work with the URL rewriting features of 2be,
 	 * so it should be called whenever outputting a URL is required. If url() is
 	 * called with no parameters, it will return the URL of the index page.
 	 *
@@ -383,13 +383,13 @@ interface template_interface {
 	 * @param string $action The action the URL should point to.
 	 * @param array $params An array of parameters which should be part of the URL's query string.
 	 * @param bool $full_location Whether to return an absolute URL or a relative URL.
-	 * @return string The URL in a format to work with the current configuration of WonderPHP.
+	 * @return string The URL in a format to work with the current configuration of 2be.
 	 */
 	public function url($component = null, $action = null, $params = array(), $full_location = false);
 }
 
 /**
- * Manages WonderPHP configuration.
+ * Manages 2be configuration.
  * @package Core
  */
 interface configurator_interface extends component_interface {
@@ -397,7 +397,7 @@ interface configurator_interface extends component_interface {
 	 * Disables a component.
 	 *
 	 * This function renames the component's directory by adding a dot (.) in
-	 * front of the name. This causes WonderPHP to ignore the component.
+	 * front of the name. This causes 2be to ignore the component.
 	 *
 	 * @param string $component The name of the component.
 	 * @return bool True on success, false on failure.
@@ -407,7 +407,7 @@ interface configurator_interface extends component_interface {
 	 * Enables a component.
 	 *
 	 * This function renames the component's directory by removing the dot (.)
-	 * in front of the name. This causes WonderPHP to recognize the component.
+	 * in front of the name. This causes 2be to recognize the component.
 	 *
 	 * @param string $component The name of the component.
 	 * @return bool True on success, false on failure.
@@ -484,7 +484,7 @@ interface configurator_component_interface {
  */
 interface log_manager_interface extends component_interface {
 	/**
-	 * Log an entry to the WonderPHP log.
+	 * Log an entry to the 2be log.
 	 *
 	 * @param string $message The message to be logged.
 	 * @param string $level The level of the message. (debug, info, notice, warning, error, or fatal)
@@ -797,7 +797,7 @@ interface entity_manager_interface extends component_interface {
  * Database abstraction object.
  *
  * Used to provide a standard, abstract way to access, manipulate, and store
- * data in WonderPHP.
+ * data in 2be.
  * 
  * The GUID is not set until the entity is saved. GUIDs must be unique forever,
  * even after deletion. It's the job of the entity manager to make sure no two
@@ -938,9 +938,9 @@ interface entity_interface extends data_object_interface {
 	 */
 	public function remove_tag();
 	/**
-	 * Return a WonderPHP Entity Reference for this entity.
+	 * Return a 2be Entity Reference for this entity.
 	 *
-	 * @return array A WonderPHP Entity Reference array.
+	 * @return array A 2be Entity Reference array.
 	 */
 	public function to_reference();
 }
@@ -1177,14 +1177,14 @@ interface uploader_interface extends component_interface {
 }
 
 /**
- * WonderPHP Icon theme.
+ * 2be Icon theme.
  * @package Core
  */
 interface icons_interface extends component_interface {
 	/**
 	 * Load the icon theme.
 	 *
-	 * This will provide CSS styling for the WonderPHP Icon styles.
+	 * This will provide CSS styling for the 2be Icon styles.
 	 */
 	public function load();
 }
