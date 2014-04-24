@@ -156,45 +156,49 @@ $_->com_pgrid->load();
 		$checker_html = h($cur_checker);
 		$help = $_->depend->help($cur_checker);
 		if ($help) { ?>
-	<div class="modal hide" id="p_muid_checker_<?php echo $checker_html; ?>">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3 style="background-position: left center; background-repeat: no-repeat; min-height: 32px; padding-left: 36px; line-height: 32px;" class="picon-32 picon-help-contents"><?php e($help['cname']); ?></h3>
-		</div>
-		<div class="modal-body">
-			<?php if (!empty($help['description'])) { ?>
-			<div><?php echo $_->com_markdown->transform($help['description']); ?></div>
-			<?php } if (!empty($help['syntax'])) { ?>
-			<div class="page-header">
-				<h3>Syntax</h3>
+	<div class="modal fade" id="p_muid_checker_<?php echo $checker_html; ?>">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 style="background-position: left center; background-repeat: no-repeat; min-height: 32px; padding-left: 36px; line-height: 32px;" class="picon-32 picon-help-contents modal-title"><?php e($help['cname']); ?></h4>
+				</div>
+				<div class="modal-body">
+					<?php if (!empty($help['description'])) { ?>
+					<div><?php echo $_->com_markdown->transform($help['description']); ?></div>
+					<?php } if (!empty($help['syntax'])) { ?>
+					<div class="page-header">
+						<h3>Syntax</h3>
+					</div>
+					<div><?php echo $_->com_markdown->transform($help['syntax']); ?></div>
+					<?php } if (!empty($help['examples'])) { ?>
+					<div class="page-header">
+						<h3>Examples</h3>
+					</div>
+					<div><?php echo $_->com_markdown->transform($help['examples']); ?></div>
+					<?php } if ($help['simple_parse']) { ?>
+					<div class="page-header">
+						<h3>Simple Logic</h3>
+					</div>
+					<div>
+						<p>This checker supports simple logic using the following
+							constructs:</p>
+						<ul>
+							<li><code><abbr title="Exclamation Point">!</abbr></code> - Negation (the result is reversed)</li>
+							<li><code><abbr title="Ampersand">&</abbr></code> - And (both values must be true)</li>
+							<li><code><abbr title="Vertical Pipe">|</abbr></code> - Or (at least one value must be true)</li>
+							<li><code><abbr title="Parentheses">()</abbr></code> - Grouping (test values in atomic groups)</li>
+						</ul>
+						<p>So to test value1 or value2, but not both, you could specify
+							the following:</p>
+						<pre><strong>(</strong>value1<strong>|</strong>value2<strong>)&!(</strong>value1<strong>&amp;</strong>value2<strong>)</strong></pre>
+					</div>
+					<?php } ?>
+				</div>
+				<div class="modal-footer">
+					<button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+				</div>
 			</div>
-			<div><?php echo $_->com_markdown->transform($help['syntax']); ?></div>
-			<?php } if (!empty($help['examples'])) { ?>
-			<div class="page-header">
-				<h3>Examples</h3>
-			</div>
-			<div><?php echo $_->com_markdown->transform($help['examples']); ?></div>
-			<?php } if ($help['simple_parse']) { ?>
-			<div class="page-header">
-				<h3>Simple Logic</h3>
-			</div>
-			<div>
-				<p>This checker supports simple logic using the following
-					constructs:</p>
-				<ul>
-					<li><code><abbr title="Exclamation Point">!</abbr></code> - Negation (the result is reversed)</li>
-					<li><code><abbr title="Ampersand">&</abbr></code> - And (both values must be true)</li>
-					<li><code><abbr title="Vertical Pipe">|</abbr></code> - Or (at least one value must be true)</li>
-					<li><code><abbr title="Parentheses">()</abbr></code> - Grouping (test values in atomic groups)</li>
-				</ul>
-				<p>So to test value1 or value2, but not both, you could specify
-					the following:</p>
-				<pre><strong>(</strong>value1<strong>|</strong>value2<strong>)&!(</strong>value1<strong>&amp;</strong>value2<strong>)</strong></pre>
-			</div>
-			<?php } ?>
-		</div>
-		<div class="modal-footer">
-			<button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
 		</div>
 	</div>
 		<?php }
@@ -214,7 +218,7 @@ $_->com_pgrid->load();
 					$help = $_->depend->help($cur_checker);
 					$title = h($help['cname']);
 					if ($help)
-						$checker_links[] = "<a title=\"$title\" href=\"javascript:void(0);\" onclick=\"\$('#p_muid_cur_condition_type').val($checker_js);\">$checker_html</a> <a href=\"#p_muid_checker_$checker_html\" data-toggle=\"modal\"><i class=\"icon-info-sign\"></i></a>";
+						$checker_links[] = "<a title=\"$title\" href=\"javascript:void(0);\" onclick=\"\$('#p_muid_cur_condition_type').val($checker_js);\">$checker_html</a> <a href=\"#p_muid_checker_$checker_html\" data-toggle=\"modal\"><i class=\"fa fa-info-circle\"></i></a>";
 					else
 						$checker_links[] = "<a href=\"javascript:void(0);\" onclick=\"\$('#p_muid_cur_condition_type').val($checker_js);\">$checker_html</a>";
 				}
