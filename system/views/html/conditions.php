@@ -194,7 +194,7 @@ $_->com_pgrid->load();
 			<?php } ?>
 		</div>
 		<div class="modal-footer">
-			<button type="button" data-dismiss="modal" class="btn">Close</button>
+			<button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
 		</div>
 	</div>
 		<?php }
@@ -223,11 +223,11 @@ $_->com_pgrid->load();
 			</div>
 			<div class="pf-element">
 				<label><span class="pf-label">Type</span>
-					<input class="pf-field" type="text" name="cur_condition_type" id="p_muid_cur_condition_type" size="24" /></label>
+					<input class="pf-field form-control" type="text" name="cur_condition_type" id="p_muid_cur_condition_type" size="24" /></label>
 			</div>
 			<div class="pf-element">
 				<label><span class="pf-label">Value</span>
-					<input class="pf-field" type="text" name="cur_condition_value" size="24" /></label>
+					<input class="pf-field form-control" type="text" name="cur_condition_value" size="24" /></label>
 			</div>
 		</div>
 		<br style="clear: both; height: 1px;" />
