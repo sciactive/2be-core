@@ -754,9 +754,9 @@ EOF;
 \!
 :	Check that no component was requested.
 
-com_sales|com_storefront
-:	Check that either a com_sales action or a com_storefront action was
-	requested or is currently running.
+com_sales|com_shop
+:	Check that either a com_sales action or a com_shop action was requested or
+	is currently running.
 
 ^com_sales
 :	Check that a com_sales action was requested.
@@ -883,9 +883,9 @@ EOF;
 :	Check that no component and action were requested. This is how you check
 	that the user is on the homepage.
 
-com_storefront/category/browse|com_storefront/product
+com_shop/category/browse|com_shop/product
 :	Check that the user requested either a category page or a product page in
-	the storefront component.
+	the shop component.
 
 !com_user/recover
 :	Check that the user did not request the account recovery page.
