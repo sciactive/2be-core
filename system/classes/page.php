@@ -64,6 +64,21 @@ class page {
 	 */
 	public $override = false;
 
+	/**
+	 * Instead of returning a normal page, return content for an AJAX call.
+	 *
+	 * By default, the content type is set to JSON, but you will still need to
+	 * supply $content as a string (probably using json_encode).
+	 *
+	 * @param string $content The content to return to the client.
+	 * @param string $content_type The media type to return in the HTTP headers.
+	 */
+	public function ajax($content, $content_type = 'application/json') {
+		header('Content-Type: '.$content_type);
+		$this->override = true;
+		$this->override_doc = $content;
+	}
+
 	private function title_load() {
 		global $_;
 		$this->title = $_->config->page_title;
@@ -102,7 +117,7 @@ class page {
 			$this->title_load();
 		$this->title = $add_title.$this->title;
 	}
-	
+
 	/**
 	 * Get the title of the page.
 	 *
@@ -116,7 +131,7 @@ class page {
 			$this->title_load();
 		return $this->title;
 	}
-	
+
 	/**
 	 * Add a notice to be displayed to the user.
 	 *
@@ -125,7 +140,7 @@ class page {
 	public function notice($message) {
 		$this->notice[] = $message;
 	}
-	
+
 	/**
 	 * Get the array of notices.
 	 *
@@ -134,7 +149,7 @@ class page {
 	public function get_notice() {
 		return $this->notice;
 	}
-	
+
 	/**
 	 * Add an error to be displayed to the user.
 	 *
@@ -143,7 +158,7 @@ class page {
 	public function error($message) {
 		$this->error[] = $message;
 	}
-	
+
 	/**
 	 * Get the array of errors.
 	 *
@@ -152,7 +167,7 @@ class page {
 	public function get_error() {
 		return $this->error;
 	}
-	
+
 	/**
 	 * Attach a module to a position on the page.
 	 *
@@ -183,7 +198,7 @@ class page {
 		$this->modules[$position][$order] = $module;
 		return $order;
 	}
-	
+
 	/**
 	 * Deletes a module from the list of attached modules.
 	 *
@@ -218,7 +233,7 @@ class page {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Append text to the override document.
 	 *
@@ -229,7 +244,7 @@ class page {
 	public function override_doc($add_body) {
 		$this->override_doc .= $add_body;
 	}
-	
+
 	/**
 	 * Get the override document.
 	 *
@@ -238,7 +253,7 @@ class page {
 	public function get_override_doc() {
 		return $this->override_doc;
 	}
-	
+
 	/**
 	 * Renders the page.
 	 *
@@ -278,7 +293,7 @@ class page {
 		$this->content = ob_get_clean();
 		return $this->content;
 	}
-	
+
 	/**
 	 * Render the modules in a position.
 	 *

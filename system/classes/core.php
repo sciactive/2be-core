@@ -215,7 +215,7 @@ class core {
 	 *
 	 * You do not need to explicitly call this method. It is called by PHP when
 	 * you access the variable normally.
-	 * 
+	 *
 	 * This function will try to load a component's class into any variables
 	 * beginning with com_. Standard variables will be loaded into their correct
 	 * variables as well.
@@ -265,7 +265,7 @@ class core {
 	 *
 	 * You do not need to explicitly call this method. It is called by PHP when
 	 * you access the variable normally.
-	 * 
+	 *
 	 * This function catches any standard system classes, so they don't get set
 	 * to the name of their class. This allows them to be dynamically loaded
 	 * when they are first called.
@@ -394,9 +394,9 @@ class core {
 
 	/**
 	 * Format a date using the DateTime class.
-	 * 
+	 *
 	 * $type can be any of the following:
-	 * 
+	 *
 	 * - full_sort - Date and time, big endian and 24 hour format so it is sortable.
 	 * - full_long - Date and time, long format.
 	 * - full_med - Date and time, medium format.
@@ -483,7 +483,7 @@ class core {
 
 	/**
 	 * Format a date range into a human understandable phrase.
-	 * 
+	 *
 	 * $format is built using macros, which are substrings replaced by the
 	 * corresponding number of units. There are singular macros, such as #year#,
 	 * which are used if the number of that unit is 1. For example, if the range
@@ -493,19 +493,19 @@ class core {
 	 * and its description in curly brackets. If the unit is 0, everything in
 	 * that curly bracket will be removed. This allows you to place both #year#
 	 * and #years# and always end up with the right one.
-	 * 
+	 *
 	 * Since the units in curly brackets that equal 0 are removed, you can
 	 * include as many as you want and only the relevant ones will be used. If
 	 * you choose not to include one, such as year, then the next available one
 	 * will include the time that would have been placed in it. For example, if
 	 * the time range is 2 years, but you only include months, then months will
 	 * be set to 24.
-	 * 
+	 *
 	 * After formatting, any leading and trailing whitespace is trimmed before
 	 * the result is returned.
-	 * 
+	 *
 	 * $format can contain the following macros:
-	 * 
+	 *
 	 * - #years# - The number of years.
 	 * - #year# - The number 1 if applicable.
 	 * - #months# - The number of months.
@@ -520,16 +520,16 @@ class core {
 	 * - #minute# - The number 1 if applicable.
 	 * - #seconds# - The number of seconds.
 	 * - #second# - The number 1 if applicable.
-	 * 
+	 *
 	 * If $format is left null, it defaults to the following:
-	 * 
+	 *
 	 * "{#years# years}{#year# year} {#months# months}{#month# month} {#days# days}{#day# day} {#hours# hours}{#hour# hour} {#minutes# minutes}{#minute# minute} {#seconds# seconds}{#second# second}"
-	 * 
+	 *
 	 * Here are some examples of formats and what would be outputted given a
 	 * time range of 2 years 5 months 1 day and 4 hours. (These values were
 	 * calculated on Fri Oct 14 2011 in San Diego, which has DST. 2012 is a leap
 	 * year.)
-	 * 
+	 *
 	 * - "#years# years {#days# days}{#day# day}" - 2 years 152 days
 	 * - "{#months# months}{#month# month} {#days# days}{#day# day}" - 29 months 1 day
 	 * - "{#weeks# weeks}{#week# week} {#days# days}{#day# day}" - 126 weeks 1 day
@@ -539,7 +539,7 @@ class core {
 	 *
 	 * A component can hook this function and redirect the call to its own
 	 * function in order to provide localization.
-	 * 
+	 *
 	 * @param int $start_timestamp The timestamp of the beginning of the date range.
 	 * @param int $end_timestamp The timestamp of the end of the date range.
 	 * @param string $format The format to use. See the function description for details on the format.
@@ -742,14 +742,14 @@ class core {
 
 	/**
 	 * Get a fuzzy time string.
-	 * 
+	 *
 	 * Converts a timestamp from the past into a human readable estimation of
 	 * the time that has passed.
-	 * 
+	 *
 	 * Ex: a few minutes ago
-	 * 
+	 *
 	 * Credit: http://www.byteinn.com/res/426/Fuzzy_Time_function/
-	 * 
+	 *
 	 * @param int $timestamp The timestamp to format.
 	 * @return string Fuzzy time string.
 	 */

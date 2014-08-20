@@ -14,16 +14,13 @@ defined('P_RUN') or die('Direct access prohibited');
 if (!gatekeeper())
 	punt_user();
 
-$_->page->override = true;
-header('Content-Type: text/plain');
-
 try {
 	if (empty(idx($_REQUEST, 'timezone'))) {
 		$date = new DateTime(idx($_REQUEST, 'date'));
 	} else {
 		$date = new DateTime(idx($_REQUEST, 'date'), new DateTimeZone(idx($_REQUEST, 'timezone')));
 	}
-	$_->page->override_doc($date->format('U'));
+	$_->page->ajax($date->format('U'), 'text/plain');
 } catch (Exception $e) {
-	$_->page->override_doc('error');
+	$_->page->ajax('error', 'text/plain');
 }
