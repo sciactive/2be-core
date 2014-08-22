@@ -14,13 +14,13 @@ defined('P_RUN') or die('Direct access prohibited');
 return array(
 	'name' => '2be',
 	'author' => 'SciActive',
-	'version' => '2.0.1dev',
+	'version' => '3.0.0dev',
 	'license' => 'http://www.gnu.org/licenses/agpl-3.0.html',
 	'website' => 'http://2be.io/',
 	'short_description' => '2be core system.',
 	'description' => 'The core system of the 2be PHP framework.',
 	'depend' => array(
-		'php' => '>=5.3.0'
+		'php' => '>=5.4.0'
 	),
 	'abilities' => array(
 		array('all', 'All Abilities', 'Let user do anything, regardless of whether they have the ability.')

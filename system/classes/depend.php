@@ -990,7 +990,7 @@ EOF;
 	 * </pre>
 	 *
 	 * @param string $value The logic statement.
-	 * @param callback $callback The callback with which to check each part.
+	 * @param callable $callback The callback with which to check each part.
 	 * @return bool The result of the parsing.
 	 */
 	public function simple_parse($value, $callback) {
