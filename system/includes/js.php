@@ -16,7 +16,7 @@ define('P_RUN', true);
 function pines_print_time() {
 	return;
 }
-require '../init/i10functions.php';
+require '../init/i05functions.php';
 
 header('Content-Type: text/javascript');
 header('Vary: Accept-Encoding');

@@ -61,6 +61,11 @@ class core {
 	 */
 	public $page;
 	/**
+	 * The Nymph ORM.
+	 * @var NymphDriver
+	 */
+	public $nymph;
+	/**
 	 * An array of the enabled components.
 	 * @var array
 	 */
@@ -74,7 +79,7 @@ class core {
 	 * An array of the possible system services.
 	 * @var array
 	 */
-	public $service_names = array('template', 'configurator', 'log_manager', 'entity_manager', 'user_manager', 'editor', 'uploader', 'icons');
+	public $service_names = array('template', 'configurator', 'log_manager', 'user_manager', 'editor', 'uploader', 'icons');
 	/**
 	 * An array of the system services.
 	 * @var array
@@ -127,6 +132,7 @@ class core {
 		$this->depend = new depend;
 		$this->menu = new menu;
 		$this->page = new page;
+		$this->nymph = RPHP::_('Nymph');
 		if (P_SCRIPT_TIMING) pines_print_time('Load the 2be base system services.');
 
 		$this->load_system_config();

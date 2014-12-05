@@ -956,9 +956,8 @@ EOF;
 editor
 :	Check that an editor is installed and enabled.
 
-entity_manager&user_manager
-:	Check that an entity manager and a user manager are both installed and
-	enabled.
+peditor&user_manager
+:	Check that an editor and a user manager are both installed and enabled.
 EOF;
 			$return['simple_parse'] = true;
 			return $return;

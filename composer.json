@@ -1,0 +1,43 @@
+{
+	"name": "sciactive/2be",
+	"description": "Web application framework.",
+	"version": "3.0.0dev",
+	"time": "2014-12-04",
+	"homepage": "http://2be.io/",
+	"type": "framework",
+	"authors": [
+		{
+			"name": "Hunter Perrin",
+			"email": "hunter@sciactive.com",
+			"homepage": "https://github.com/hperrin",
+			"role": "Developer"
+		}
+	],
+	"keywords": [
+		"framework"
+	],
+	"license": "AGPL",
+	"support": {
+		"issues": "https://github.com/sciactive/2be-core/issues",
+		"wiki": "https://github.com/sciactive/2be-core/wiki",
+		"source": "https://github.com/sciactive/2be-core"
+	},
+	"archive": {
+		"exclude": [
+			"**/.*",
+			"node_modules",
+			"bower_components",
+			"vendor",
+			"bower.json"
+		]
+	},
+	"repositories": [
+		{
+			"url": "https://github.com/sciactive/nymph.git",
+			"type": "vcs"
+		}
+	],
+	"require": {
+		"sciactive/nymph": "~1.0@beta"
+	}
+}

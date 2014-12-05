@@ -1,0 +1,19 @@
+{
+  "name": "2be",
+  "description": "Web application framework.",
+  "version": "3.0.0dev",
+  "authors": [
+    "Hunter Perrin <hunter@sciactive.com>"
+  ],
+  "main": "index.php",
+  "license": "AGPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+	"composer.json"
+  ],
+  "dependencies": {
+    "nymph": "https://github.com/sciactive/nymph.git"
+  }
+}

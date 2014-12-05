@@ -61,7 +61,7 @@ return array(
 		'name' => 'offline_twitter_feed',
 		'cname' => 'Offline Twitter Feed',
 		'description' => 'An optional Twitter username to display tweets from while offline.',
-		'value' => '2be_io',
+		'value' => 'SciActive',
 	),
 	array(
 		'name' => 'page_title',

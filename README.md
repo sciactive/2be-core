@@ -17,7 +17,7 @@ You can find more information about 2be, including a live demo, at the
 2be Around the Web
 ------------------
 
-* Follow [2be on Twitter](http://twitter.com/2be_io).
+* Follow [SciActive on Twitter](http://twitter.com/SciActive).
 * Fork [2be on GitHub](http://github.com/sciactive).
 * Visit [2be](http://2be.io/).
 * Visit [SciActive](http://sciactive.com/).
@@ -31,14 +31,14 @@ mapper, complex method hooking functionality, an advanced package management
 system, and MVC architecture. It emphasizes speed and flexible/extensible
 structures.
 
-2be sports an advanced package manager called 2be Plaza which makes
-downloading and installing components and templates quick, easy, and secure.
+2be sports an advanced package manager called 2be Plaza which makes downloading
+and installing components and templates quick, easy, and secure.
 
-2be has a full featured Content Management System, Calendar, Instant
-Messenger, File Manager, Point of Sale system, Customer Relation Manager, Human
-Resource Manager, Web Shop, Loan Management System, and Internet Cafe Manager
-(just to name a few). With conditional configuration, it can run multiple
-websites from one installation.
+2be has a full featured Content Management System, Calendar, Instant Messenger,
+File Manager, Point of Sale system, Customer Relation Manager, Human Resource
+Manager, Web Shop, Loan Management System, and Internet Cafe Manager (just to
+name a few). With conditional configuration, it can run multiple websites from
+one installation.
 
 So basically, if you're a PHP developer looking to make a **kick ass webapp**,
 2be is for you! ;)
