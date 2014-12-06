@@ -94,13 +94,13 @@ if (P_SCRIPT_TIMING) pines_print_time('Load 2be');
  * - depend - Dependency system.
  * - menu - Menu system.
  * - page - Display controller.
+ * - nymph - Nymph ORM.
  *
  * Provided by Components:
  *
  * - template - The current template's object.
  * - configurator - Manages configuration settings for 2be and components.
  * - log_manager - Manages logging features.
- * - entity_manager - Manages data abstraction (entities).
  * - user_manager - Manages users, groups, and their permissions.
  * - editor - Provides a content editor.
  * - uploader - Provides a file uploader.

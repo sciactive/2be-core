@@ -22,12 +22,12 @@ defined('P_RUN') or die('Direct access prohibited');
  * @package Core
  * @property configurator_interface $configurator The configurator service.
  * @property editor_interface $editor The editor service.
- * @property entity_manager_interface $entity_manager The entity manager service.
  * @property icons_interface $icons The icons service.
  * @property log_manager_interface $log_manager The log manager service.
  * @property template_interface $template The template service.
  * @property uploader_interface $uploader The uploader service.
  * @property user_manager_interface $user_manager The user manager service.
+ * @property NymphDriver $nymph The Nymph ORM.
  */
 class core {
 	/**
@@ -133,6 +133,12 @@ class core {
 		$this->menu = new menu;
 		$this->page = new page;
 		$this->nymph = RPHP::_('Nymph');
+		RPHP::undef('Nymph');
+		$nymph = $this->nymph;
+		$this->hook->hook_object($nymph, '$_->nymph->');
+		RPHP::_('Nymph', array(), function() use ($nymph) {
+			return $nymph;
+		});
 		if (P_SCRIPT_TIMING) pines_print_time('Load the 2be base system services.');
 
 		$this->load_system_config();
