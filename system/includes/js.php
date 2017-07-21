@@ -12,6 +12,8 @@
  * @link http://sciactive.com/
  */
 
+error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+
 define('P_RUN', true);
 function pines_print_time() {
 	return;

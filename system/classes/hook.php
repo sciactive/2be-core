@@ -147,6 +147,8 @@ class hook {
 
 		if ($recursive && !$is_string) {
 			foreach ($object as $cur_name => &$cur_property) {
+				if ($class_name === 'com_mysql' &&	$cur_name === 'link')
+					continue;
 				if ((object) $cur_property === $cur_property)
 					$this->hook_object($cur_property, $prefix.$cur_name.'->');
 			}
